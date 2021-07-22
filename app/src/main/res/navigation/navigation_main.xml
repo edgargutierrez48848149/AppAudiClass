@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/modelsFragment">
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.menu.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_secondaryMenuFragment"
+            app:destination="@id/secondaryMenuFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_modelsFragment"
+            app:destination="@id/modelsFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_companyFragment"
+            app:destination="@id/companyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondaryMenuFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.menu.SecondaryMenuFragment"
+        android:label="fragment_secondary_menu"
+        tools:layout="@layout/fragment_secondary_menu" />
+    <fragment
+        android:id="@+id/modelsFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.ModelsFragment"
+        android:label="fragment_models"
+        tools:layout="@layout/fragment_models" >
+        <action
+            android:id="@+id/action_modelsFragment_to_versionsFragment"
+            app:destination="@id/versionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.us.CompanyFragment"
+        android:label="fragment_company"
+        tools:layout="@layout/fragment_company" />
+    <fragment
+        android:id="@+id/versionsFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.VersionsFragment"
+        android:label="fragment_versions"
+        tools:layout="@layout/fragment_versions" >
+        <action
+            android:id="@+id/action_versionsFragment_to_agenciesFragment"
+            app:destination="@id/agenciesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agenciesFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.AgenciesFragment"
+        android:label="fragment_agencies"
+        tools:layout="@layout/fragment_agencies" >
+        <action
+            android:id="@+id/action_agenciesFragment_to_stocktakingFragment"
+            app:destination="@id/stocktakingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stocktakingFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.StocktakingFragment"
+        android:label="fragment_stocktaking"
+        tools:layout="@layout/fragment_stocktaking" />
+</navigation>

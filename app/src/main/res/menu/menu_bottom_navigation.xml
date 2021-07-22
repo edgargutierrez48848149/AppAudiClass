@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_principal_1"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/item_principal_2"
+        android:title="Contacto" />
+
+    <item
+        android:id="@+id/item_principal_3"
+        android:title="Ayuda" />
+
+    <item
+        android:id="@+id/item_principal_4"
+        android:title="Notificaciones" />
+
+    <item
+        android:id="@+id/item_principal_5"
+        android:title="Usuario" />
+</menu>
