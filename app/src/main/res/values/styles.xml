@@ -1,6 +1,6 @@
 <resources>
     <style name="splash" parent="Theme.AppAudiClass">
-        <item name="android:windowBackground">@color/color_primary</item>
+        <item name="android:windowBackground">?attr/colorPrimary</item>
     </style>
 
     <style name="Splash" parent="Theme.AppAudiClass">
@@ -11,7 +11,7 @@
     </style>
 
     <style name="Widget.Theme.AppMovies.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/color_primary</item>
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
 
 </resources>
