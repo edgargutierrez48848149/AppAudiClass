@@ -3,34 +3,47 @@ package com.dvalic.appaudiclass.ui.main.fragments.buys.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.dvalic.appaudiclass.core.LayoutPagerManager
 import com.dvalic.appaudiclass.core.ViewHolderMain
-import com.dvalic.appaudiclass.data.models.Modelos
-import com.dvalic.appaudiclass.databinding.ItemPictureBinding
-import java.util.ArrayList
+import com.dvalic.appaudiclass.data.models.Anios
+import com.dvalic.appaudiclass.databinding.ViewpagerDetailsBinding
+import java.util.*
 
-class ViewPagerDetails(private val models: ArrayList<Modelos>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
+class ViewPagerDetails(private val item: ArrayList<Anios>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMain<*> {
-        val itemBinding = ItemPictureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemBinding = ViewpagerDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemBinding, parent.context)
     }
 
     override fun onBindViewHolder(holder: ViewHolderMain<*>, position: Int) {
         when(holder){
-            is ViewHolder -> holder.bind(models[position])
+            is ViewHolder -> holder.bind(item[position])
         }
     }
 
-    override fun getItemCount(): Int = models.size
+    override fun getItemCount(): Int = item.size
 
     private inner class ViewHolder(
-        val binding:ItemPictureBinding,
+        val binding:ViewpagerDetailsBinding,
         val context:Context
-    ):ViewHolderMain<Modelos>(binding.root){
-        override fun bind(item: Modelos) {
-            Glide.with(context).load(item.Anios?.get(0)?.GamaColores?.get(0)?.Ruta).into(binding.ivPicture)
+    ):ViewHolderMain<Anios>(binding.root){
+        override fun bind(item: Anios) {
+            if (item.Versiones?.size!! <= 4){
+                binding.rvVersions.layoutManager = LayoutPagerManager(context,LinearLayoutManager.HORIZONTAL,false,item.Versiones.size)
+            }
+            binding.rvVersions.adapter = RecyclerViewVersions(item.Versiones)
+            binding.rvColors.layoutManager = LayoutPagerManager(context,LinearLayoutManager.HORIZONTAL,false,5)
+            binding.rvColors.adapter = item.GamaColores?.let { RecyclerViewColors(it) }
+            binding.tvNameColor.text = item.GamaColores?.get(0)?.Nombre
+            binding.tvDetail1.text = item.Atributo1
+            binding.tvDetail2.text = item.Atributo2
+            binding.tvDetail3.text = item.Atributo3
+            binding.tvDetail4.text = item.Atributo4
+            binding.tvDetail5.text = item.Atributo5
+            binding.tvDetail6.text = item.Atributo6
         }
     }
 }

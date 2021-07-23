@@ -11,6 +11,7 @@ import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.data.models.ModelModels
 import com.dvalic.appaudiclass.databinding.FragmentModelsBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
+import com.dvalic.appaudiclass.ui.main.fragments.buys.adapters.ViewPagerDetails
 import com.dvalic.appaudiclass.ui.main.fragments.buys.adapters.ViewPagerModels
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,15 +25,19 @@ class ModelsFragment : Fragment(R.layout.fragment_models) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentModelsBinding.bind(view)
 
+        //Todo Disable scrolling in viewpager
+        binding.vpDetails.isUserInputEnabled = false
+
+        //Todo Get data
         mainViewModel.getModel().observe(viewLifecycleOwner, { models ->
             binding.vpModelos.adapter = models.Modelos?.let { ViewPagerModels(it) }
             binding.vpModelos.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(pageSelected: Int) {
                     binding.tvModelName.text = models.Modelos?.get(pageSelected)?.NombreModelo
-                    binding.vpDetails.adapter = models.Modelos?.let { ViewPagerModels(it) }
+                    binding.vpDetails.adapter = models.Modelos?.get(pageSelected)?.Anios?.let { ViewPagerDetails(it) }
                     TabLayoutMediator(binding.tabYear, binding.vpDetails) { tab, tabselected ->
-                        tab.text = ""
+                        tab.text = models.Modelos?.get(pageSelected)?.Anios?.get(tabselected)?. Anio
                     }.attach()
                 }
             })

@@ -60,6 +60,7 @@
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:indeterminate="true"
         app:layout_constraintTop_toBottomOf="@+id/bl_principal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
