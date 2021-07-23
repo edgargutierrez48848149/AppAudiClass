@@ -1,16 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!--Tema de la aplicación base Night -->
     <style name="Theme.AppAudiClass" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryVariant">@color/color_secundary</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/color_secundary</item>
-        <item name="colorSecondaryVariant">@color/color_secundary</item>
+        <!--color para la barra de la aplicación y otros elementos primarios de la interfaz de usuario-->
+        <item name="colorPrimary">@color/primary</item>
+        <!--una variante más oscura del color primario, usada para la barra de estado y barras de aplicaciones contextuales-->
+        <item name="colorPrimaryVariant">@color/secundary</item>
+        <!--un color secundario para controles como casillas de verificación y campos de texto-->
+        <item name="colorOnPrimary">@color/primary</item>
+        <item name="colorSecondary">@color/secundary</item>
+        <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Status bar y navigation transparentes -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
+
 </resources>

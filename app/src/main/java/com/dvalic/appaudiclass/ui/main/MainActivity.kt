@@ -4,6 +4,8 @@ import android.os.Binder
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dvalic.appaudiclass.R

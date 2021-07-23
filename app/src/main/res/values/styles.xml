@@ -1,0 +1,17 @@
+<resources>
+    <style name="splash" parent="Theme.AppAudiClass">
+        <item name="android:windowBackground">@color/color_primary</item>
+    </style>
+
+    <style name="Splash" parent="Theme.AppAudiClass">
+        <item name="android:actionBarStyle">@style/Widget.Theme.AppMovies.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="Widget.Theme.AppMovies.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/color_primary</item>
+    </style>
+
+</resources>
