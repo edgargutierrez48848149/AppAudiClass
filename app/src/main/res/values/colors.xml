@@ -4,5 +4,8 @@
     <color name="secundary">#E1DEDB</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#38983C</color>
+    <color name="yellow">#ECD97E</color>
+    <color name="red">#F86E6E</color>
     <color name="transparent">#00000000</color>
 </resources>

@@ -3,7 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/modelsFragment">
+    app:startDestination="@id/mainMenuFragment">
+
+    <action
+        android:id="@+id/action_to_mainMenuFragment"
+        app:destination="@id/mainMenuFragment"
+        app:enterAnim="@animator/nav_default_enter_anim"
+        app:exitAnim="@animator/nav_default_exit_anim"
+        app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+        app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.menu.MainMenuFragment"
@@ -11,13 +19,25 @@
         tools:layout="@layout/fragment_main_menu" >
         <action
             android:id="@+id/action_mainMenuFragment_to_secondaryMenuFragment"
-            app:destination="@id/secondaryMenuFragment" />
+            app:destination="@id/secondaryMenuFragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_mainMenuFragment_to_modelsFragment"
-            app:destination="@id/modelsFragment" />
+            app:destination="@id/modelsFragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_mainMenuFragment_to_companyFragment"
-            app:destination="@id/companyFragment" />
+            app:destination="@id/companyFragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/secondaryMenuFragment"
@@ -31,7 +51,11 @@
         tools:layout="@layout/fragment_models" >
         <action
             android:id="@+id/action_modelsFragment_to_versionsFragment"
-            app:destination="@id/versionsFragment" />
+            app:destination="@id/versionsFragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/companyFragment"

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!--Tema de la aplicación base Day -->
     <style name="Theme.AppAudiClass" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!--color para la barra de la aplicación y otros elementos primarios de la interfaz de usuario-->
@@ -12,7 +12,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar y navigation transparentes -->
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <!-- Status bar blanca o negra -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>

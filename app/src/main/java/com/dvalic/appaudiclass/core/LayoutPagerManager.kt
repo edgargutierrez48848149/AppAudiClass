@@ -4,11 +4,12 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.roundToInt
 
-class LayoutPagerManager(context: Context, orientation: Int, reverseLayout: Boolean, private val itemsPerPage: Int) : LinearLayoutManager(context,orientation,reverseLayout) {
+class LayoutPagerManager(context: Context, orientation: Int, reverseLayout: Boolean, private val itemsPerPage: Int) : LinearLayoutManager(context, orientation, reverseLayout) {
 
     override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-        return super.checkLayoutParams(lp) && lp!!.width == getItemSize()
+        return super.checkLayoutParams(lp) && (lp!!.width == getItemSize()|| lp.height == getItemSize())
     }
 
     override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
@@ -31,6 +32,6 @@ class LayoutPagerManager(context: Context, orientation: Int, reverseLayout: Bool
 
     private fun getItemSize(): Int {
         val pageSize = if (orientation == HORIZONTAL) width else height
-        return Math.round(pageSize.toFloat() / itemsPerPage)
+        return (pageSize.toFloat() / itemsPerPage).roundToInt()
     }
 }
