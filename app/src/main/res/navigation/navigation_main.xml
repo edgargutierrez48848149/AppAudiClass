@@ -8,10 +8,10 @@
     <action
         android:id="@+id/action_to_mainMenuFragment"
         app:destination="@id/mainMenuFragment"
-        app:enterAnim="@animator/nav_default_enter_anim"
-        app:exitAnim="@animator/nav_default_exit_anim"
-        app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-        app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+        app:enterAnim="@anim/anim_enter_right"
+        app:exitAnim="@anim/anim_exit_left"
+        app:popEnterAnim="@anim/anim_enter_left"
+        app:popExitAnim="@anim/anim_exit_right"/>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.menu.MainMenuFragment"
@@ -20,24 +20,24 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_secondaryMenuFragment"
             app:destination="@id/secondaryMenuFragment"
-            app:enterAnim="@animator/nav_default_enter_anim"
-            app:exitAnim="@animator/nav_default_exit_anim"
-            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+            app:enterAnim="@anim/anim_enter_right"
+            app:exitAnim="@anim/anim_exit_left"
+            app:popEnterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_exit_right"/>
         <action
             android:id="@+id/action_mainMenuFragment_to_modelsFragment"
             app:destination="@id/modelsFragment"
-            app:enterAnim="@animator/nav_default_enter_anim"
-            app:exitAnim="@animator/nav_default_exit_anim"
-            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
-            android:id="@+id/action_mainMenuFragment_to_companyFragment"
-            app:destination="@id/companyFragment"
-            app:enterAnim="@animator/nav_default_enter_anim"
-            app:exitAnim="@animator/nav_default_exit_anim"
-            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+            android:id="@+id/action_mainMenuFragment_to_usFragment"
+            app:destination="@id/usFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/secondaryMenuFragment"
@@ -52,16 +52,12 @@
         <action
             android:id="@+id/action_modelsFragment_to_versionsFragment"
             app:destination="@id/versionsFragment"
-            app:enterAnim="@animator/nav_default_enter_anim"
-            app:exitAnim="@animator/nav_default_exit_anim"
-            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+            app:enterAnim="@anim/anim_enter_right"
+            app:exitAnim="@anim/anim_exit_left"
+            app:popEnterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_exit_right"/>
     </fragment>
-    <fragment
-        android:id="@+id/companyFragment"
-        android:name="com.dvalic.appaudiclass.ui.main.fragments.us.CompanyFragment"
-        android:label="fragment_company"
-        tools:layout="@layout/fragment_company" />
+
     <fragment
         android:id="@+id/versionsFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.VersionsFragment"
@@ -69,7 +65,11 @@
         tools:layout="@layout/fragment_versions" >
         <action
             android:id="@+id/action_versionsFragment_to_agenciesFragment"
-            app:destination="@id/agenciesFragment" />
+            app:destination="@id/agenciesFragment"
+            app:enterAnim="@anim/anim_enter_right"
+            app:exitAnim="@anim/anim_exit_left"
+            app:popEnterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_exit_right"/>
     </fragment>
     <fragment
         android:id="@+id/agenciesFragment"
@@ -78,11 +78,22 @@
         tools:layout="@layout/fragment_agencies" >
         <action
             android:id="@+id/action_agenciesFragment_to_stocktakingFragment"
-            app:destination="@id/stocktakingFragment" />
+            app:destination="@id/stocktakingFragment"
+            app:enterAnim="@anim/anim_enter_right"
+            app:exitAnim="@anim/anim_exit_left"
+            app:popEnterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_exit_right"/>
     </fragment>
+
     <fragment
         android:id="@+id/stocktakingFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.StocktakingFragment"
         android:label="fragment_stocktaking"
         tools:layout="@layout/fragment_stocktaking" />
+
+    <fragment
+        android:id="@+id/usFragment"
+        android:name="com.dvalic.appaudiclass.ui.main.fragments.us.UsFragment"
+        android:label="fragment_us"
+        tools:layout="@layout/fragment_us" />
 </navigation>

@@ -14,7 +14,7 @@ import com.dvalic.appaudiclass.databinding.ItemPictureBinding
 import com.dvalic.appaudiclass.databinding.ViewpagerDetailsBinding
 import java.util.ArrayList
 
-class RecyclerViewColors(private val item: ArrayList<GamaColores>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
+class RecyclerColors(private val item: ArrayList<GamaColores>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMain<*> {
         val itemBinding = ItemColorBinding.inflate(LayoutInflater.from(parent.context), parent, false)

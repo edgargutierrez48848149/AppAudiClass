@@ -1,0 +1,50 @@
+package com.dvalic.appaudiclass.ui.main.fragments.menu.adapters
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.dvalic.appaudiclass.core.ViewHolderMain
+import com.dvalic.appaudiclass.data.models.PoliticasAgencias
+import com.dvalic.appaudiclass.databinding.ItemSecondaryMenuBinding
+
+class RecyclerSecondaryMenuPolitics (
+
+    private val item: ArrayList<PoliticasAgencias>,
+    private val itemClickListener: OnClickPolitics,
+
+    ) : RecyclerView.Adapter<ViewHolderMain<*>>() {
+
+    interface OnClickPolitics {
+        fun onClickPolitics(politics: PoliticasAgencias)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMain<*> {
+        val itemBinding =
+            ItemSecondaryMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemholder = ViewHolder(itemBinding)
+        itemBinding.root.setOnClickListener {
+            val position =
+                itemholder.bindingAdapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
+                    ?: return@setOnClickListener
+            itemClickListener.onClickPolitics(item[position])
+        }
+        return itemholder
+    }
+
+    override fun onBindViewHolder(holder: ViewHolderMain<*>, position: Int) {
+        when (holder) {
+            is ViewHolder -> holder.bind(item[position])
+        }
+    }
+
+    override fun getItemCount(): Int = item.size
+
+    private inner class ViewHolder(
+        val binding: ItemSecondaryMenuBinding,
+    ) : ViewHolderMain<PoliticasAgencias>(binding.root) {
+        override fun bind(item: PoliticasAgencias) {
+            binding.tvSecondaryMenu.text = item.NombreAgencia
+        }
+    }
+}

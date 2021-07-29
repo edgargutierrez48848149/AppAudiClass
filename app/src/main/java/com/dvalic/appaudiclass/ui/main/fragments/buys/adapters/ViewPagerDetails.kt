@@ -34,9 +34,9 @@ class ViewPagerDetails(private val item: ArrayList<Anios>) : RecyclerView.Adapte
             if (item.Versiones?.size!! <= 4){
                 binding.rvVersions.layoutManager = LayoutPagerManager(context,LinearLayoutManager.HORIZONTAL,false,item.Versiones.size)
             }
-            binding.rvVersions.adapter = RecyclerViewVersions(item.Versiones)
+            binding.rvVersions.adapter = RecyclerVersions(item.Versiones)
             binding.rvColors.layoutManager = LayoutPagerManager(context,LinearLayoutManager.HORIZONTAL,false,5)
-            binding.rvColors.adapter = item.GamaColores?.let { RecyclerViewColors(it) }
+            binding.rvColors.adapter = item.GamaColores?.let { RecyclerColors(it) }
             binding.tvNameColor.text = item.GamaColores?.get(0)?.Nombre
             binding.tvDetail1.text = item.Atributo1
             binding.tvDetail2.text = item.Atributo2

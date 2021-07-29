@@ -73,13 +73,12 @@ dependencies {
     implementation("androidx.room:room-ktx:2.3.0")
     kapt("androidx.room:room-compiler:2.3.0")
     //Todo ExoPlayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.14.1'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.14.1'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.14.1'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.14.1'
-
-    //Todo Compose Runtime
-    implementation("androidx.compose.runtime:runtime:1.0.0-rc02")
-    implementation("androidx.compose.runtime:runtime-livedata:1.0.0-rc02")
-    implementation("androidx.compose.runtime:runtime-rxjava2:1.0.0-rc02")
+    implementation 'com.google.android.exoplayer:exoplayer:2.14.2'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.14.2'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.14.2'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.14.2'
+    //Todo PDF Viewer
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation "commons-io:commons-io:20030203.000550"
 }

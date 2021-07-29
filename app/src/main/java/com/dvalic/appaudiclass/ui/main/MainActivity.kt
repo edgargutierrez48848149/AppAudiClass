@@ -1,5 +1,7 @@
 package com.dvalic.appaudiclass.ui.main
 
+import android.animation.LayoutTransition
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,11 +10,13 @@ import android.os.Looper
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.findNavController
 import com.dvalic.appaudiclass.R
+import com.dvalic.appaudiclass.core.DialogView
+import com.dvalic.appaudiclass.core.PdfViewerActivity
 import com.dvalic.appaudiclass.core.Resource
-import com.dvalic.appaudiclass.data.network.NetworkConnection
+import com.dvalic.appaudiclass.core.WebViewActivity
+import com.dvalic.appaudiclass.data.network.ConnectionLiveData
 import com.dvalic.appaudiclass.data.network.NetworkDataSource
 import com.dvalic.appaudiclass.databinding.ActivityMainBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
@@ -25,16 +29,15 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), InterfazFragments {
 
-    lateinit var networkConnection: NetworkConnection
-
+    private lateinit var connectionLiveData: ConnectionLiveData
     private lateinit var binding: ActivityMainBinding
     private val viewModelData: ViewModelData by viewModels()
 
     private val viewModel by viewModels<ViewModelMain> {
         ViewModelFactoryMain(
-                RepositoryImplementMain(
-                        NetworkDataSource(RetrofitClient.webservice)
-                )
+            RepositoryImplementMain(
+                NetworkDataSource(RetrofitClient.webservice)
+            )
         )
     }
 
@@ -43,37 +46,24 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        networkConnection = NetworkConnection(this)
-        val isNetworkAviable = networkConnection.observeAsState(false).value
-        ConnectivityMonitor(isNetworkAviable)
-
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.title == "Inicio") {
-            }
-            when (item.title == "Usuario") {
-            }
-            true
-        }
+        checkNetworkConnection()
         getModelsPolitics()
+
+        val lt = LayoutTransition()
+        lt.disableTransitionType(LayoutTransition.CHANGE_APPEARING)
+        binding.clMainActivity.layoutTransition = lt
     }
 
-    private fun ConnectivityMonitor(inNetworkAviable:Boolean){
-        if (inNetworkAviable) {
-            binding.tvConectionStatus.text = "En Linea"
-            binding.tvConectionStatus.setBackgroundColor(getColor(R.color.green))
-            binding.tvConectionStatus.visibility = View.VISIBLE
-            Handler(Looper.getMainLooper()).postDelayed({
+    @SuppressLint("SetTextI18n")
+    private fun checkNetworkConnection() {
+        connectionLiveData = ConnectionLiveData(application)
+        connectionLiveData.observe(this, { isConnected ->
+            if (isConnected) {
                 binding.tvConectionStatus.visibility = View.GONE
-            }, 1500)
-            if (viewModelData.getModels().value == null || viewModelData.getPolitics().value == null) {
-                getModelsPolitics()
+            } else {
+                binding.tvConectionStatus.visibility = View.VISIBLE
             }
-        } else {
-            binding.tvConectionStatus.text = "Sin conexión"
-            binding.tvConectionStatus.setBackgroundColor(getColor(R.color.black))
-            binding.tvConectionStatus.visibility = View.VISIBLE
-
-        }
+        })
     }
 
     private fun getModelsPolitics() {
@@ -86,15 +76,18 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
                     binding.progressIndicator.visibility = View.GONE
                     viewModelData.setModels(result.data.first)
                     viewModelData.setPolitics(result.data.second)
+                    viewModelData.set360mockups(result.data.third)
                 }
                 is Resource.Failure -> {
                     binding.progressIndicator.visibility = View.GONE
-                    val mySnackbar = Snackbar.make(binding.fragmentContainerView,
-                            "Comprueba tu conexion a internet", Snackbar.LENGTH_INDEFINITE)
-                            .setBackgroundTint(getColor(R.color.black))
-                            .setTextColor(getColor(R.color.white))
-                            .setAction("Reintentar") { getModelsPolitics() }
-                            .setActionTextColor(getColor(R.color.red))
+                    val mySnackbar = Snackbar.make(
+                        binding.fragmentContainerView,
+                        "Comprueba tu conexion a internet", Snackbar.LENGTH_INDEFINITE
+                    )
+                        .setBackgroundTint(getColor(R.color.black))
+                        .setTextColor(getColor(R.color.white))
+                        .setAction("Reintentar") { getModelsPolitics() }
+                        .setActionTextColor(getColor(R.color.red))
                     mySnackbar.show()
                 }
             }
@@ -137,12 +130,37 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
             2 -> color = getColor(R.color.yellow)
             3 -> color = getColor(R.color.red)
         }
-        val mySnackbar = Snackbar.make(binding.fragmentContainerView,
-                "$text", Snackbar.LENGTH_SHORT)
-                .setBackgroundTint(getColor(R.color.black))
-                .setTextColor(color)
+        val mySnackbar = Snackbar.make(
+            binding.fragmentContainerView,
+            "$text", Snackbar.LENGTH_SHORT
+        )
+            .setBackgroundTint(getColor(R.color.black))
+            .setTextColor(color)
 
         mySnackbar.show()
 
+    }
+
+    override fun showWebView(bundle: Bundle?) {
+        val intent = Intent(this, WebViewActivity::class.java)
+        bundle?.let { intent.putExtras(it) }
+        startActivity(intent)
+    }
+
+    override fun showPdf(bundle: Bundle?) {
+        val intent = Intent(this, PdfViewerActivity::class.java)
+        bundle?.let { intent.putExtras(it) }
+        startActivity(intent)
+    }
+
+    override fun showDialog(title:String,description:String,textPositiveButton:String,textNegativeButton:String) {
+        val bundle = Bundle()
+        bundle.putString("title",title)
+        bundle.putString("description",description)
+        bundle.putString("positivebutton",textPositiveButton)
+        bundle.putString("negativebutton",textNegativeButton)
+        val mBottomSheetFragment = DialogView()
+        mBottomSheetFragment.arguments = bundle
+        mBottomSheetFragment.show(supportFragmentManager, "MY_BOTTOM_SHEET")
     }
 }

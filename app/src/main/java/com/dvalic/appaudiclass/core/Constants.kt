@@ -1,21 +1,6 @@
 package com.dvalic.appaudiclass.core
 
-import java.io.IOException
-import java.net.InetSocketAddress
-import javax.net.SocketFactory
-
 object Constants {
-    const val BASE_URL = "http://ws-smartit.divisionautomotriz.com/wsApiVW/"
+    const val BASE_URL = "http://10.5.16.17/wsApiVW/"
     const val ID_MARK = "41"
-
-    fun execute(socketFactory: SocketFactory): Boolean {
-        return try{
-            val socket = socketFactory.createSocket() ?: throw IOException("Socket is null.")
-            socket.connect(InetSocketAddress("8.8.8.8", 53), 1500)
-            socket.close()
-            true
-        }catch (e: IOException){
-            false
-        }
-    }
 }

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_main_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
@@ -31,7 +32,7 @@
                     android:adjustViewBounds="true"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/ic_seat_toolbar" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -63,9 +64,10 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemIconTint="@color/black"
         android:background="@color/white"
         android:fitsSystemWindows="true"
-        app:labelVisibilityMode="auto"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toTopOf="@+id/tv_conection_status"
         app:menu="@menu/menu_bottom_navigation" />
 
@@ -76,10 +78,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Conection status" />
-
-
+        android:visibility="visible"
+        android:background="@color/black"
+        android:text="Sin conexión"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

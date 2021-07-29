@@ -1,7 +1,10 @@
 package com.dvalic.appaudiclass.ui.main.fragments.buys
 
+import android.animation.LayoutTransition
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -23,7 +26,23 @@ class ModelsFragment : Fragment(R.layout.fragment_models){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentModelsBinding.bind(view)
+
+        val lt = LayoutTransition()
+        lt.disableTransitionType(LayoutTransition.CHANGING)
+        binding.clFragmentModels.layoutTransition = lt
+
         interfazFragments?.showBars(true)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.vpModelos.visibility = View.VISIBLE
+        }, 200)
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.tabYear.visibility = View.VISIBLE
+        }, 300)
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.vpDetails.visibility = View.VISIBLE
+        }, 400)
+
         binding.vpDetails.isUserInputEnabled = false
         mainViewModel.getModels().observe(viewLifecycleOwner, { models ->
             binding.vpModelos.adapter = models.Modelos?.let { ViewPagerModels(it) }

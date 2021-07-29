@@ -1,6 +1,7 @@
 package com.dvalic.appaudiclass.repositorys
 
 import com.dvalic.appaudiclass.core.Constants
+import com.dvalic.appaudiclass.data.models.Model360mockups
 import com.dvalic.appaudiclass.data.models.ModelModels
 import com.dvalic.appaudiclass.data.models.ModelPolitics
 import com.google.gson.GsonBuilder
@@ -16,6 +17,9 @@ interface WebService {
 
     @GET("api/Agencia/GetObtenerPoliticasXMarca")
     suspend fun getPolitics (@Query("aIdMarca") aIdMarca: String): ModelPolitics
+
+    @GET("api/Autos/GetMaquetasXMarca")
+    suspend fun get360mockups (@Query("aIdMarca") aIdMarca: String): Model360mockups
 }
 
 object RetrofitClient{

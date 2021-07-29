@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item_principal_1"
+        android:icon="@drawable/ic_home"
         android:title="Inicio" />
     <item
         android:id="@+id/item_principal_2"
+        android:icon="@drawable/ic_contact"
         android:title="Contacto" />
 
     <item
         android:id="@+id/item_principal_3"
+        android:icon="@drawable/ic_support"
         android:title="Ayuda" />
 
     <item
         android:id="@+id/item_principal_4"
+        android:icon="@drawable/ic_notification"
         android:title="Notificaciones" />
-
-    <item
-        android:id="@+id/item_principal_5"
-        android:title="Usuario" />
 </menu>

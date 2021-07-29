@@ -17,4 +17,17 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="WebView" parent="Theme.AppAudiClass">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="PdfViewer" parent="Theme.AppAudiClass">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
 </resources>

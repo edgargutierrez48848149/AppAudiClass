@@ -13,7 +13,7 @@ class ViewModelMain(private val repositoryMain: RepositoryMain) : ViewModel() {
     fun fetchModels() = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(Pair(repositoryMain.getModels(),repositoryMain.getPolitics())))
+            emit(Resource.Success(Triple(repositoryMain.getModels(),repositoryMain.getPolitics(),repositoryMain.get360mockups())))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }

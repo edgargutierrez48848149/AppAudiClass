@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_viewpager_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -34,7 +35,7 @@
         android:layout_width="15dp"
         android:layout_height="0dp"
         android:rotation="180"
-        android:src="@drawable/ic_arrow_scroll"
+        android:src="@drawable/ic_arrow_scroll_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +44,7 @@
         android:id="@+id/iv_arrow_right"
         android:layout_width="15dp"
         android:layout_height="0dp"
-        android:src="@drawable/ic_arrow_scroll"
+        android:src="@drawable/ic_arrow_scroll_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -17,7 +17,7 @@ import com.dvalic.appaudiclass.databinding.ItemVersionBinding
 import com.dvalic.appaudiclass.databinding.ViewpagerDetailsBinding
 import java.util.ArrayList
 
-class RecyclerViewVersions(private val element: ArrayList<Versiones>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
+class RecyclerVersions(private val element: ArrayList<Versiones>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMain<*> {
         val itemBinding = ItemVersionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
