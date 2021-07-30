@@ -3,8 +3,6 @@ package com.dvalic.appaudiclass.ui.main.fragments.us
 import android.animation.LayoutTransition
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.dvalic.appaudiclass.R
@@ -27,13 +25,6 @@ class UsFragment : Fragment(R.layout.fragment_us) {
         binding.clFragmentUs.layoutTransition = lt
 
         interfazFragments?.showBars(true)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.tabNosotros.visibility = View.VISIBLE
-        }, 200)
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.vpUs.visibility = View.VISIBLE
-        }, 300)
 
         val fragments: ArrayList<String> = arrayListOf()
         fragments.add("Grupo Autofin Mexico")

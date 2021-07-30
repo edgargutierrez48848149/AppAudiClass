@@ -64,6 +64,7 @@ class WebViewActivity : AppCompatActivity() {
             binding.WebView.goBack()
         } else {
             super.onBackPressed()
+            finish()
         }
     }
 }

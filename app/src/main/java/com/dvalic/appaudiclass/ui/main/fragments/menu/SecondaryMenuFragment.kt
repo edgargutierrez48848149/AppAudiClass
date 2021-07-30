@@ -7,13 +7,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.dvalic.appaudiclass.R
-import com.dvalic.appaudiclass.core.DialogView
 import com.dvalic.appaudiclass.data.models.PoliticasAgencias
 import com.dvalic.appaudiclass.databinding.FragmentSecondaryMenuBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
 import com.dvalic.appaudiclass.repositorys.InterfazFragments
 import com.dvalic.appaudiclass.ui.main.fragments.menu.adapters.RecyclerSecondaryMenuPolitics
-import com.dvalic.appaudiclass.ui.main.fragments.mockups.MockupsDialog
 
 class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
     RecyclerSecondaryMenuPolitics.OnClickPolitics {
@@ -55,7 +53,7 @@ class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
         binding.ivClose.setOnClickListener { requireActivity().onBackPressed() }
 
         binding.cvUser.setOnClickListener {
-            interfazFragments?.showDialog("prueba","description","buton1","button2")
+            interfazFragments?.showDialog("prueba","description","buton1",null, null,null)
         }
 
         binding.cvPolitics.setOnClickListener {

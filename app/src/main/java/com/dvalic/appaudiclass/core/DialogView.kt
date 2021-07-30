@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.dvalic.appaudiclass.databinding.DialogViewBinding
 
 
-class DialogView : DialogFragment() {
+class DialogView(private val positiveAction: Unit?, private val negativeAction: Unit?) : DialogFragment() {
 
     private lateinit var binding: DialogViewBinding
     private var title: String? = ""
@@ -49,9 +49,28 @@ class DialogView : DialogFragment() {
         binding.tvTitle.text = title
         binding.tvSubtitle.text = description
         binding.btnPositiveButton.text = positivebutton
-        if (negativebutton != "") {
+        if (negativebutton != null && negativebutton != "") {
             binding.btnNegativeButton.visibility = View.VISIBLE
             binding.btnNegativeButton.text = negativebutton
         }
+
+        binding.btnPositiveButton.setOnClickListener {
+            if (positiveAction != null) {
+                positiveAction
+                dismiss()
+            } else {
+                dismiss()
+            }
+        }
+
+        binding.btnNegativeButton.setOnClickListener {
+            if (negativeAction != null) {
+                negativeAction
+                dismiss()
+            } else {
+                dismiss()
+            }
+        }
+
     }
 }

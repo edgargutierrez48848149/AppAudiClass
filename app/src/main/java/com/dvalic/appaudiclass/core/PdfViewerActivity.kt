@@ -40,11 +40,11 @@ class PdfViewerActivity : AppCompatActivity() {
         when (type) {
             0 -> ruta?.let { getPdfNameFromAssets(it) }
             1 -> selectPdfFromStorage()
-            2 -> checkCameraPermission()
+            2 -> checkPermission()
         }
     }
 
-    private fun checkCameraPermission() {
+    private fun checkPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestCameraPermission()
         } else {
@@ -163,5 +163,10 @@ class PdfViewerActivity : AppCompatActivity() {
                 .enableAntialiasing(true)
                 .spacing(0)
                 .load()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

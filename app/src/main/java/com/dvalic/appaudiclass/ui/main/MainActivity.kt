@@ -1,13 +1,12 @@
 package com.dvalic.appaudiclass.ui.main
 
+import android.Manifest
 import android.animation.LayoutTransition
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -26,8 +25,9 @@ import com.dvalic.appaudiclass.repositorys.InterfazFragments
 import com.dvalic.appaudiclass.repositorys.RepositoryImplementMain
 import com.dvalic.appaudiclass.repositorys.RetrofitClient
 import com.google.android.material.snackbar.Snackbar
+import com.vmadalin.easypermissions.EasyPermissions
 
-class MainActivity : AppCompatActivity(), InterfazFragments {
+class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.PermissionCallbacks {
 
     private lateinit var connectionLiveData: ConnectionLiveData
     private lateinit var binding: ActivityMainBinding
@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         checkNetworkConnection()
         getModelsPolitics()
 
@@ -54,7 +53,6 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
         binding.clMainActivity.layoutTransition = lt
     }
 
-    @SuppressLint("SetTextI18n")
     private fun checkNetworkConnection() {
         connectionLiveData = ConnectionLiveData(application)
         connectionLiveData.observe(this, { isConnected ->
@@ -94,16 +92,6 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
         })
     }
 
-    override fun showBars(visivility: Boolean) {
-        if (visivility) {
-            binding.barLayout.visibility = View.VISIBLE
-            binding.bottomNavigation.visibility = View.VISIBLE
-        } else {
-            binding.barLayout.visibility = View.GONE
-            binding.bottomNavigation.visibility = View.GONE
-        }
-    }
-
     override fun showMainMenufragment() {
         showBars(false)
         findNavController(R.id.fragment_container_view).navigate(R.id.action_to_mainMenuFragment)
@@ -112,6 +100,21 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
     override fun showModelsfragment() {
         showBars(true)
         findNavController(R.id.fragment_container_view).navigate(R.id.action_mainMenuFragment_to_modelsFragment)
+    }
+
+    override fun showVersionsFragment(bundle: Bundle?) {
+        showBars(true)
+        findNavController(R.id.fragment_container_view).navigate(R.id.action_modelsFragment_to_versionsFragment)
+    }
+
+    override fun showBars(visibility: Boolean) {
+        if (visibility) {
+            binding.barLayout.visibility = View.VISIBLE
+            binding.bottomNavigation.visibility = View.VISIBLE
+        } else {
+            binding.barLayout.visibility = View.GONE
+            binding.bottomNavigation.visibility = View.GONE
+        }
     }
 
     override fun showWebPage(url: String?) {
@@ -123,7 +126,7 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
         }
     }
 
-    override fun showSnackbar(text: String?, type: Int) {
+    override fun showSnackbar(url: String?, type: Int) {
         var color = 0
         when (type) {
             1 -> color = getColor(R.color.green)
@@ -132,7 +135,7 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
         }
         val mySnackbar = Snackbar.make(
             binding.fragmentContainerView,
-            "$text", Snackbar.LENGTH_SHORT
+            "$url", Snackbar.LENGTH_SHORT
         )
             .setBackgroundTint(getColor(R.color.black))
             .setTextColor(color)
@@ -148,19 +151,71 @@ class MainActivity : AppCompatActivity(), InterfazFragments {
     }
 
     override fun showPdf(bundle: Bundle?) {
-        val intent = Intent(this, PdfViewerActivity::class.java)
-        bundle?.let { intent.putExtras(it) }
-        startActivity(intent)
+        if (permissionExternalStorage()) {
+            val intent = Intent(this, PdfViewerActivity::class.java)
+            bundle?.let { intent.putExtras(it) }
+            startActivity(intent)
+        } else {
+            EasyPermissions.requestPermissions(
+                this,
+                "La Aplicacion requiere permiso para mostrar los documentos",
+                1,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        }
     }
 
-    override fun showDialog(title:String,description:String,textPositiveButton:String,textNegativeButton:String) {
+    override fun showDialog(
+        title: String?,
+        description: String?,
+        textPositiveButton: String?,
+        textNegativeButton: String?,
+        actionPositive: Unit?,
+        actionNegative:Unit?
+    ) {
         val bundle = Bundle()
-        bundle.putString("title",title)
-        bundle.putString("description",description)
-        bundle.putString("positivebutton",textPositiveButton)
-        bundle.putString("negativebutton",textNegativeButton)
-        val mBottomSheetFragment = DialogView()
-        mBottomSheetFragment.arguments = bundle
-        mBottomSheetFragment.show(supportFragmentManager, "MY_BOTTOM_SHEET")
+        bundle.putString("title", title)
+        bundle.putString("description", description)
+        bundle.putString("positivebutton", textPositiveButton)
+        bundle.putString("negativebutton", textNegativeButton)
+        val dialogView = DialogView(actionPositive, actionNegative)
+        dialogView.arguments = bundle
+        dialogView.show(supportFragmentManager, "MY_BOTTOM_SHEET")
+    }
+
+
+    private fun permissionExternalStorage(): Boolean {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    }
+
+
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        showDialog(
+            "Aviso",
+            "Para visualizar documentos permita que ${resources.getString(R.string.app_name)} pueda acceder a archivos",
+            "Ajustes",
+            null,
+             goToSettingsApp(),null
+        )
+    }
+
+    private fun goToSettingsApp() {
+        Toast.makeText(this, "prueba", Toast.LENGTH_SHORT).show()
+        // val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        // intent.data = Uri.parse("package:$packageName")
+        // startActivity(intent)
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 }

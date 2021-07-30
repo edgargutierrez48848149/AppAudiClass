@@ -1,5 +1,6 @@
 package com.dvalic.appaudiclass.data.models
 
+import java.io.Serializable
 import java.util.ArrayList
 
 data class ModelModels(
@@ -33,7 +34,7 @@ data class Versiones(
     val PrecioTransmision: ArrayList<PrecioTransmision>? = arrayListOf(),
     val Colores: ArrayList<Colores>? = arrayListOf(),
     val Accesorios: ArrayList<AccesoriosModelos>? = arrayListOf()
-)
+) : Serializable
 
 data class PrecioTransmision(
     val IdVersion: String? = "",

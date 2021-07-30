@@ -33,7 +33,6 @@
         android:id="@+id/vp_modelos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guideline_1"
         app:layout_constraintTop_toBottomOf="@+id/tv_model_name" />
 
@@ -41,7 +40,6 @@
         android:id="@+id/tab_year"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guideline_2"
         app:layout_constraintTop_toTopOf="@+id/guideline_1"
         app:tabIndicatorGravity="bottom"
@@ -51,7 +49,6 @@
         android:id="@+id/vp_details"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_2" />

@@ -27,17 +27,13 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_modelsFragment"
             app:destination="@id/modelsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:enterAnim="@anim/anim_enter_alpha"
+            app:exitAnim="@anim/anim_exit_alpha"/>
         <action
             android:id="@+id/action_mainMenuFragment_to_usFragment"
             app:destination="@id/usFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:enterAnim="@anim/anim_enter_alpha"
+            app:exitAnim="@anim/anim_exit_alpha" />
     </fragment>
     <fragment
         android:id="@+id/secondaryMenuFragment"

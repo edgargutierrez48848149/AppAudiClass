@@ -9,8 +9,8 @@ import com.dvalic.appaudiclass.data.models.Maquetas
 import com.dvalic.appaudiclass.databinding.ItemMockupsBinding
 
 class RecyclerMockups(
-private val item: ArrayList<Maquetas>,
-private val itemClickListener: OnMovieclickListener,
+    private val item: ArrayList<Maquetas>,
+    private val itemClickListener: OnMovieclickListener,
 ) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 
     interface OnMovieclickListener {
@@ -22,14 +22,14 @@ private val itemClickListener: OnMovieclickListener,
         val itemholder = ViewHolder(itemBinding)
         itemBinding.root.setOnClickListener {
             val position = itemholder.bindingAdapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
-                ?: return@setOnClickListener
+                    ?: return@setOnClickListener
             itemClickListener.onMenuClick(item[position])
         }
         return itemholder
     }
 
     override fun onBindViewHolder(holder: ViewHolderMain<*>, position: Int) {
-        when(holder){
+        when (holder) {
             is ViewHolder -> holder.bind(item[position])
         }
     }
@@ -38,7 +38,7 @@ private val itemClickListener: OnMovieclickListener,
 
     private inner class ViewHolder(
         val binding: ItemMockupsBinding,
-    ):ViewHolderMain<Maquetas>(binding.root){
+    ) : ViewHolderMain<Maquetas>(binding.root) {
         override fun bind(item: Maquetas) {
             binding.tvMockups.text = item.NombreApp
         }
