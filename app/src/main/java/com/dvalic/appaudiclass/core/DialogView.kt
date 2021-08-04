@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.dvalic.appaudiclass.databinding.DialogViewBinding
+import com.dvalic.appaudiclass.repositorys.network.InterfazDialogAction
 
 
-class DialogView(private val positiveAction: Unit?, private val negativeAction: Unit?) : DialogFragment() {
+class DialogView(private val actionPositive: InterfazDialogAction?, private val actionNegative: InterfazDialogAction?) : DialogFragment() {
 
     private lateinit var binding: DialogViewBinding
     private var title: String? = ""
@@ -55,17 +56,17 @@ class DialogView(private val positiveAction: Unit?, private val negativeAction: 
         }
 
         binding.btnPositiveButton.setOnClickListener {
-            if (positiveAction != null) {
-                positiveAction
-                dismiss()
-            } else {
-                dismiss()
-            }
+           if (actionPositive != null) {
+               actionPositive.okSelected(0)
+               dismiss()
+           } else {
+               dismiss()
+           }
         }
 
         binding.btnNegativeButton.setOnClickListener {
-            if (negativeAction != null) {
-                negativeAction
+            if (actionNegative != null) {
+                actionNegative.okSelected(0)
                 dismiss()
             } else {
                 dismiss()

@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.dvalic.appaudiclass.data.models.Maquetas
 import com.dvalic.appaudiclass.databinding.DialogMockupsBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
-import com.dvalic.appaudiclass.repositorys.InterfazFragments
+import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MockupsDialog : BottomSheetDialogFragment(),

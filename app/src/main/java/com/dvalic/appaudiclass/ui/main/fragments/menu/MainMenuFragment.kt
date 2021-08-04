@@ -14,7 +14,7 @@ import com.dvalic.appaudiclass.data.models.ModelMenu
 import com.dvalic.appaudiclass.data.models.ModelPolitics
 import com.dvalic.appaudiclass.databinding.FragmentMainMenuBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
-import com.dvalic.appaudiclass.repositorys.InterfazFragments
+import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.dvalic.appaudiclass.ui.main.fragments.menu.adapters.RecyclerMainMenu
 import com.dvalic.appaudiclass.ui.main.fragments.mockups.MockupsDialog
 
@@ -60,8 +60,8 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu),
             "SEAT" -> interfazFragments?.showWebPage(modelPolitics?.LinkPaginaOficial ?: "")
             "Canal" -> interfazFragments?.showWebPage(modelPolitics?.LinkVideo ?: "")
             "360°" -> {
-                val mBottomSheetFragment = MockupsDialog()
-                mBottomSheetFragment.show(childFragmentManager, "MY_BOTTOM_SHEET")
+                val dialog = MockupsDialog()
+                dialog.show(childFragmentManager, "MY_BOTTOM_SHEET")
             }
             "Cómpralo" -> findNavController().navigate(R.id.action_mainMenuFragment_to_modelsFragment)
             "Nosotros" -> findNavController().navigate(R.id.action_mainMenuFragment_to_usFragment)

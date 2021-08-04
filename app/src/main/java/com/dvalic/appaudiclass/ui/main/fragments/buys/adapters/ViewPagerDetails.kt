@@ -11,7 +11,7 @@ import com.dvalic.appaudiclass.core.ViewHolderMain
 import com.dvalic.appaudiclass.data.models.Anios
 import com.dvalic.appaudiclass.data.models.Versiones
 import com.dvalic.appaudiclass.databinding.ViewpagerDetailsBinding
-import com.dvalic.appaudiclass.repositorys.InterfazFragments
+import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import java.util.*
 
 class ViewPagerDetails(

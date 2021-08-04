@@ -1,6 +1,5 @@
 package com.dvalic.appaudiclass.ui.main.fragments.buys
 
-import android.animation.LayoutTransition
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.databinding.FragmentModelsBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
-import com.dvalic.appaudiclass.repositorys.InterfazFragments
+import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.dvalic.appaudiclass.ui.main.fragments.buys.adapters.ViewPagerDetails
 import com.dvalic.appaudiclass.ui.main.fragments.buys.adapters.ViewPagerModels
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,10 +23,6 @@ class ModelsFragment : Fragment(R.layout.fragment_models) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentModelsBinding.bind(view)
-
-        val lt = LayoutTransition()
-        lt.disableTransitionType(LayoutTransition.CHANGING)
-        binding.clFragmentModels.layoutTransition = lt
 
         interfazFragments?.showBars(true)
 

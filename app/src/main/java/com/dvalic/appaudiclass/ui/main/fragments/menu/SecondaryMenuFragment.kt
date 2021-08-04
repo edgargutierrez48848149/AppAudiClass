@@ -10,7 +10,7 @@ import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.data.models.PoliticasAgencias
 import com.dvalic.appaudiclass.databinding.FragmentSecondaryMenuBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
-import com.dvalic.appaudiclass.repositorys.InterfazFragments
+import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.dvalic.appaudiclass.ui.main.fragments.menu.adapters.RecyclerSecondaryMenuPolitics
 
 class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
@@ -53,7 +53,7 @@ class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
         binding.ivClose.setOnClickListener { requireActivity().onBackPressed() }
 
         binding.cvUser.setOnClickListener {
-            interfazFragments?.showDialog("prueba","description","buton1",null, null,null)
+            interfazFragments?.showAcount()
         }
 
         binding.cvPolitics.setOnClickListener {

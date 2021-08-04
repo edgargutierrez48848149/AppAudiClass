@@ -1,14 +1,16 @@
 package com.dvalic.appaudiclass.data.models
 
-data class ModelUser(
-    val Ok: String? = "",
-    val Mensaje: String? = "",
-    val Objeto: GetIniciarSesion
-)
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
-data class GetIniciarSesion(
+@Parcelize
+@Entity(tableName = "user_table")
+data class ModelUser(
     val IdCuenta: String? = "",
-    val IdPersona: String? = "",
+    @PrimaryKey
+    val IdPersona: String = "-1",
     val Nombre: String? = "",
     val ApellidoPaterno: String? = "",
     val ApellidoMaterno: String? = "",
@@ -17,4 +19,4 @@ data class GetIniciarSesion(
     val Token: String? = "",
     val LadaMovil: String? = "",
     val TelefonoMovil: String? = ""
-)
+):Parcelable

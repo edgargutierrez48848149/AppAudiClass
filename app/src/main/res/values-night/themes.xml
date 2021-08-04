@@ -13,7 +13,6 @@
         <!-- Status bar y navigation transparentes -->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:navigationBarColor">@color/white</item>
         <!-- Status bar blanca o negra -->
         <item name="android:windowLightStatusBar">false</item>
     </style>
