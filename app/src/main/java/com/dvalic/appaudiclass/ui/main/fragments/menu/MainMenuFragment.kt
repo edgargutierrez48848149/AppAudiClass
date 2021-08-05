@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dvalic.appaudiclass.R
@@ -32,7 +31,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu),
 
         interfazFragments?.showBars(false)
 
-        mainViewModel.getPolitics().observe(viewLifecycleOwner, Observer {
+        mainViewModel.getPolitics().observe(viewLifecycleOwner, {
             modelPolitics = it
         })
 

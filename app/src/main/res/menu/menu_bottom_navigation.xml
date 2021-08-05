@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/item_principal_1"
+        android:id="@+id/item_1"
         android:icon="@drawable/ic_home"
-        android:title="Inicio" />
+        android:title="@string/inicio" />
     <item
-        android:id="@+id/item_principal_2"
+        android:id="@+id/item_2"
         android:icon="@drawable/ic_contact"
-        android:title="Contacto" />
+        android:title="@string/contacto" />
 
     <item
-        android:id="@+id/item_principal_3"
+        android:id="@+id/item_3"
         android:icon="@drawable/ic_support"
-        android:title="Ayuda" />
+        android:title="@string/ayuda" />
 
     <item
-        android:id="@+id/item_principal_4"
+        android:id="@+id/item_4"
         android:icon="@drawable/ic_notification"
-        android:title="Notificaciones" />
+        android:title="@string/notificaciones" />
 </menu>

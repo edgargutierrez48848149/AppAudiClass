@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.dvalic.appaudiclass.data.local.LocalUserDB
-import com.dvalic.appaudiclass.data.local.LocalUserDao
 import com.dvalic.appaudiclass.data.models.ModelUser
 import com.dvalic.appaudiclass.repositorys.local.RepositoryLocal
 import kotlinx.coroutines.Dispatchers

@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:scrollbars="vertical"
+    android:scrollbarThumbVertical="@drawable/shape_scrollbar"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,18 +13,19 @@
         android:animateLayoutChanges="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayoutCompat2"
+            android:id="@+id/linearLayoutCompat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/img_background_title"
                 android:gravity="center"
-                android:text="titulo"
+                android:textAllCaps="true"
+                android:text="@string/usuario"
                 android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -38,7 +41,7 @@
                 style="@style/textInputLayout_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="correo"
+                android:hint="@string/correo"
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -54,7 +57,7 @@
                 style="@style/textInputLayout_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="contraseña"
+                android:hint="@string/contrasena"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_password">
 
@@ -71,13 +74,13 @@
                 style="@style/buton_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Entrar" />
+                android:text="@string/iniciar_sesion" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="o\nUsa tus redes sociales" />
+                android:text="@string/o_redes_sociales" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -134,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Recuperar clave"
+                    android:text="@string/recuperar_clave"
                     android:textAllCaps="false"
                     android:textColor="@color/black" />
 
@@ -145,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Quiero registrarme"
+                    android:text="@string/quiero_registrarme"
                     android:textAllCaps="false"
                     android:textColor="@color/black" />
 

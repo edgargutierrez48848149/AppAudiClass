@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.dvalic.appaudiclass.R
+import com.dvalic.appaudiclass.core.ImageDialog
 import com.dvalic.appaudiclass.databinding.FragmentModelsBinding
 import com.dvalic.appaudiclass.presentation.ViewModelData
 import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
@@ -14,7 +15,7 @@ import com.dvalic.appaudiclass.ui.main.fragments.buys.adapters.ViewPagerDetails
 import com.dvalic.appaudiclass.ui.main.fragments.buys.adapters.ViewPagerModels
 import com.google.android.material.tabs.TabLayoutMediator
 
-class ModelsFragment : Fragment(R.layout.fragment_models) {
+class ModelsFragment : Fragment(R.layout.fragment_models), ViewPagerModels.OnModelclickListener {
 
     private lateinit var binding: FragmentModelsBinding
     private var interfazFragments: InterfazFragments? = null
@@ -28,7 +29,8 @@ class ModelsFragment : Fragment(R.layout.fragment_models) {
 
         binding.vpDetails.isUserInputEnabled = false
         mainViewModel.getModels().observe(viewLifecycleOwner, { models ->
-            binding.vpModelos.adapter = models.Modelos?.let { ViewPagerModels(it) }
+            binding.vpModelos.adapter =
+                models.Modelos?.let { ViewPagerModels(it, this@ModelsFragment) }
             binding.vpModelos.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(pageSelected: Int) {
@@ -61,5 +63,9 @@ class ModelsFragment : Fragment(R.layout.fragment_models) {
     override fun onDetach() {
         super.onDetach()
         interfazFragments = null
+    }
+
+    override fun onModelClick(string: String) {
+        interfazFragments?.showImage(string)
     }
 }

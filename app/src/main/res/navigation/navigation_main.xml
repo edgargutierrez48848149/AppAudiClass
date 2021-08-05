@@ -8,32 +8,39 @@
     <action
         android:id="@+id/action_to_mainMenuFragment"
         app:destination="@id/mainMenuFragment"
-        app:enterAnim="@anim/anim_enter_right"
-        app:exitAnim="@anim/anim_exit_left"
-        app:popEnterAnim="@anim/anim_enter_left"
-        app:popExitAnim="@anim/anim_exit_right"/>
+        app:enterAnim="@anim/anim_enter_alpha"
+        app:exitAnim="@anim/anim_exit_alpha"
+        app:launchSingleTop="true"
+        app:popEnterAnim="@anim/anim_enter_alpha"
+        app:popExitAnim="@anim/anim_exit_alpha"
+        app:popUpTo="@id/mainMenuFragment" />
+
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.menu.MainMenuFragment"
         android:label="fragment_main_menu"
-        tools:layout="@layout/fragment_main_menu" >
+        tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenuFragment_to_secondaryMenuFragment"
             app:destination="@id/secondaryMenuFragment"
             app:enterAnim="@anim/anim_enter_right"
             app:exitAnim="@anim/anim_exit_left"
             app:popEnterAnim="@anim/anim_enter_left"
-            app:popExitAnim="@anim/anim_exit_right"/>
+            app:popExitAnim="@anim/anim_exit_right" />
         <action
             android:id="@+id/action_mainMenuFragment_to_modelsFragment"
             app:destination="@id/modelsFragment"
             app:enterAnim="@anim/anim_enter_alpha"
-            app:exitAnim="@anim/anim_exit_alpha"/>
+            app:exitAnim="@anim/anim_exit_alpha"
+            app:popEnterAnim="@anim/anim_enter_alpha"
+            app:popExitAnim="@anim/anim_exit_alpha" />
         <action
             android:id="@+id/action_mainMenuFragment_to_usFragment"
             app:destination="@id/usFragment"
             app:enterAnim="@anim/anim_enter_alpha"
-            app:exitAnim="@anim/anim_exit_alpha" />
+            app:exitAnim="@anim/anim_exit_alpha"
+            app:popEnterAnim="@anim/anim_enter_alpha"
+            app:popExitAnim="@anim/anim_exit_alpha" />
     </fragment>
     <fragment
         android:id="@+id/secondaryMenuFragment"
@@ -44,41 +51,41 @@
         android:id="@+id/modelsFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.ModelsFragment"
         android:label="fragment_models"
-        tools:layout="@layout/fragment_models" >
+        tools:layout="@layout/fragment_models">
         <action
             android:id="@+id/action_modelsFragment_to_versionsFragment"
             app:destination="@id/versionsFragment"
             app:enterAnim="@anim/anim_enter_right"
             app:exitAnim="@anim/anim_exit_left"
             app:popEnterAnim="@anim/anim_enter_left"
-            app:popExitAnim="@anim/anim_exit_right"/>
+            app:popExitAnim="@anim/anim_exit_right" />
     </fragment>
 
     <fragment
         android:id="@+id/versionsFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.VersionsFragment"
         android:label="fragment_versions"
-        tools:layout="@layout/fragment_versions" >
+        tools:layout="@layout/fragment_versions">
         <action
             android:id="@+id/action_versionsFragment_to_agenciesFragment"
             app:destination="@id/agenciesFragment"
             app:enterAnim="@anim/anim_enter_right"
             app:exitAnim="@anim/anim_exit_left"
             app:popEnterAnim="@anim/anim_enter_left"
-            app:popExitAnim="@anim/anim_exit_right"/>
+            app:popExitAnim="@anim/anim_exit_right" />
     </fragment>
     <fragment
         android:id="@+id/agenciesFragment"
         android:name="com.dvalic.appaudiclass.ui.main.fragments.buys.AgenciesFragment"
         android:label="fragment_agencies"
-        tools:layout="@layout/fragment_agencies" >
+        tools:layout="@layout/fragment_agencies">
         <action
             android:id="@+id/action_agenciesFragment_to_stocktakingFragment"
             app:destination="@id/stocktakingFragment"
             app:enterAnim="@anim/anim_enter_right"
             app:exitAnim="@anim/anim_exit_left"
             app:popEnterAnim="@anim/anim_enter_left"
-            app:popExitAnim="@anim/anim_exit_right"/>
+            app:popExitAnim="@anim/anim_exit_right" />
     </fragment>
 
     <fragment

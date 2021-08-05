@@ -6,14 +6,12 @@ import com.dvalic.appaudiclass.ui.main.fragments.us.UsAgencyFragment
 import com.dvalic.appaudiclass.ui.main.fragments.us.UsAppFragment
 import com.dvalic.appaudiclass.ui.main.fragments.us.UsCompanyFragment
 
-class ViewPagerUs(
-    private val fragment: Fragment
-) : FragmentStateAdapter(fragment) {
+class ViewPagerUs(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    private val COUNT = 3
+    private val item = 3
 
     override fun getItemCount(): Int {
-        return COUNT
+        return item
     }
 
     override fun createFragment(position: Int): Fragment {

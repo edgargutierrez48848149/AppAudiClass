@@ -13,7 +13,7 @@ import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MockupsDialog : BottomSheetDialogFragment(),
-    RecyclerMockups.OnMovieclickListener {
+    RecyclerMockups.OnMenuclickListener {
     private lateinit var binding: DialogMockupsBinding
     private var interfazFragments: InterfazFragments? = null
     private val mainViewModel: ViewModelData by activityViewModels()
@@ -30,7 +30,6 @@ class MockupsDialog : BottomSheetDialogFragment(),
         mainViewModel.get360mockups().observe(viewLifecycleOwner, { mockups ->
             binding.rvMockups.adapter = mockups.Maquetas?.let { RecyclerMockups(it, this) }
         })
-        binding.btnDismis.setOnClickListener { dismiss() }
     }
 
     override fun onMenuClick(maquetas: Maquetas) {

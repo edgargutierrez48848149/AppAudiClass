@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
     android:scrollbars="vertical"
     android:scrollbarThumbVertical="@drawable/shape_scrollbar"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".ui.main.fragments.contact.ContactDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,52 +17,32 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayoutCompat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/img_background_title"
                 android:gravity="center"
+                android:text="@string/contacto"
                 android:textAllCaps="true"
-                android:text="@string/usuario"
                 android:textColor="@color/white" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_acount" />
+
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:animateLayoutChanges="true">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_profile"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_acount"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_edit"
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="@string/editar"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:gravity="center"
+                android:text="@string/necesitas_ayuda" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_name"
@@ -80,59 +61,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fist_name"
-                style="@style/textInputLayout_app"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/apellido_paterno"
-                app:startIconDrawable="@drawable/ic_email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_fist_name"
-                    style="@style/editText_app"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_last_name"
-                style="@style/textInputLayout_app"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/apellido_materno"
-                app:startIconDrawable="@drawable/ic_email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_last_name"
-                    style="@style/editText_app"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_phone"
-                style="@style/textInputLayout_app"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/telefono"
-                app:startIconDrawable="@drawable/ic_email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_phone"
-                    style="@style/editText_app"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email"
                 style="@style/textInputLayout_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="false"
                 android:hint="@string/correo"
                 app:startIconDrawable="@drawable/ic_email">
 
@@ -144,20 +76,84 @@
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_sign_out"
-                style="@style/buton_app"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_commentary"
+                style="@style/textInputLayout_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cerrar_sesion" />
+                android:hint="@string/comentario">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_commentary"
+                    style="@style/editText_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="start" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.3" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sw_legal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/switch_app"
+                    app:layout_constraintBottom_toBottomOf="@+id/materialTextView2"
+                    app:layout_constraintEnd_toStartOf="@+id/materialTextView1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/materialTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="@string/estoy_de_acuerdo_con"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView1"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="@string/terminos_y_condiciones"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="@string/aviso_de_privacidad"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView1"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView1"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_cancel"
+                android:id="@+id/btn_sign_in"
                 style="@style/buton_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cancelar"
-                android:visibility="gone" />
+                android:text="@string/enviar" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -167,7 +163,6 @@
             android:layout_height="0dp"
             android:background="@color/transparent2"
             android:visibility="gone"
-            android:animateLayoutChanges="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -187,9 +182,6 @@
                 app:trackThickness="5dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.core.widget.NestedScrollView>
+

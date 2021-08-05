@@ -16,7 +16,7 @@ class RepositoryLocal (private val localUserDao: LocalUserDao) {
         localUserDao.updateUser(modelUser)
     }
 
-    suspend fun deleteUser(){
+    fun deleteUser(){
         localUserDao.deleteUser()
     }
 }

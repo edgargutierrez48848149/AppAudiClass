@@ -1,13 +1,51 @@
 <resources>
-    <string name="app_name">AppAudiClass</string>
+    <string name="app_name">Audi Clase</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_splash">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
-    <string name="usuario">USUARIO</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="usuario">Usuario</string>
+    <string name="correo">Correo</string>
+    <string name="contrasena">Contraseña</string>
     <string name="entrar">Entrar</string>
+    <string name="sin_conexion">Sin conexión</string>
+    <string name="me_interesa">Me interesa</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="o_redes_sociales">ó\n\nUsa tus redes sociales</string>
+    <string name="recuperar_clave">Recuperar clave</string>
+    <string name="quiero_registrarme">Quiero registrarme</string>
+    <string name="editar">Editar</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido_paterno">Apellido Paterno</string>
+    <string name="apellido_materno">Apellido Materno</string>
+    <string name="telefono">Telefono</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="mis_compras">Mis compras</string>
+    <string name="politicas">Politicas</string>
+    <string name="legales">Legales</string>
+    <string name="terminos_y_condiciones">Terminos y Condiciones</string>
+    <string name="aviso_de_privacidad">Aviso de Privacidad</string>
+    <string name="contacto">Contacto</string>
+    <string name="compartir_app">Compartir app</string>
+
+    <string name="nombre_no_valido">Nombre no valido</string>
+    <string name="correo_no_valido">Correo no valido</string>
+    <string name="apellido_paterno_no_valido">Apellido paterno no valido</string>
+    <string name="apellido_materno_no_valido">Apellido materno no valido</string>
+    <string name="telefono_no_valido">Telefono no valido</string>
+    <string name="contrasena_no_valido">Contraseña no valida</string>
+    <string name="ingresa_correo_electronico">Ingresa tu correo electrónico</string>
+    <string name="registrate">Registrate</string>
+    <string name="usa_tus_redes_sociales">Usa tus redes sociales</string>
+    <string name="verifica_tu_correo">verifica tu correo</string>
+    <string name="estoy_de_acuerdo_con">Estoy de acuerdo con:</string>
+    <string name="necesitas_ayuda">¿Necesitas ayuda?</string>
+    <string name="comentario">Comentario</string>
+    <string name="enviar">Enviar</string>
+    <string name="inicio">Inicio</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="notificaciones">Notificaciones</string>
 </resources>

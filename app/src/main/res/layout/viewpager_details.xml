@@ -78,7 +78,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_color" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_name_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_launcher" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_detail_1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -165,7 +165,7 @@
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_launcher" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_detail_2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -186,7 +186,7 @@
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_launcher" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_detail_3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -218,7 +218,7 @@
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_launcher" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_detail_4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -239,7 +239,7 @@
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_launcher" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_detail_5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -260,7 +260,7 @@
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_launcher" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_detail_6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

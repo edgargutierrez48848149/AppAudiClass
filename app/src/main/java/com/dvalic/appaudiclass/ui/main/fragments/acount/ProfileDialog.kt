@@ -1,5 +1,6 @@
 package com.dvalic.appaudiclass.ui.main.fragments.acount
 
+import android.animation.LayoutTransition
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
@@ -7,12 +8,12 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.core.Constants
 import com.dvalic.appaudiclass.core.Resource
 import com.dvalic.appaudiclass.data.models.ModelUser
@@ -27,7 +28,6 @@ import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.dvalic.appaudiclass.repositorys.network.RepositoryImplementMain
 import com.dvalic.appaudiclass.repositorys.network.RetrofitClient
 import com.google.gson.JsonObject
-
 
 class ProfileDialog : DialogFragment() {
 
@@ -50,8 +50,11 @@ class ProfileDialog : DialogFragment() {
         binding = DialogProfileBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(context)
         builder.setView(binding.root)
+
         viewModelLocal = ViewModelProvider(this)[ViewModelLocal::class.java]
+
         disableFields(true)
+
         mainViewModel.getUser().observe(this, {
             binding.etName.setText(it.Nombre)
             binding.etFistName.setText(it.ApellidoPaterno)
@@ -62,7 +65,9 @@ class ProfileDialog : DialogFragment() {
         })
 
         binding.btnEdit.setOnClickListener { disableFields(false) }
+
         binding.btnCancel.setOnClickListener { disableFields(true) }
+
         binding.btnSignOut.setOnClickListener {
             if (edit) {
                 interfazFragments?.showDialog(

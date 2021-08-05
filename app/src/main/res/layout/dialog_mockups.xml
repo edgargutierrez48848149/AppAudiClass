@@ -7,13 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.fragments.mockups.MockupsDialog">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_dismis"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_arrow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        app:icon="@drawable/ic_arrow_scroll_vertical"
-        app:iconGravity="textStart"
+        android:src="@drawable/ic_arrow_scroll_vertical"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/btn_dismis"
+        app:layout_constraintTop_toBottomOf="@+id/img_arrow"
         tools:listitem="@layout/item_mockups" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

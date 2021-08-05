@@ -1,9 +1,9 @@
 package com.dvalic.appaudiclass.ui.main
 
 import android.Manifest
-import android.animation.LayoutTransition
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -15,10 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.dvalic.appaudiclass.R
-import com.dvalic.appaudiclass.core.DialogView
-import com.dvalic.appaudiclass.core.PdfViewerActivity
-import com.dvalic.appaudiclass.core.Resource
-import com.dvalic.appaudiclass.core.WebViewActivity
+import com.dvalic.appaudiclass.core.*
 import com.dvalic.appaudiclass.data.models.ModelUser
 import com.dvalic.appaudiclass.data.network.ConnectionLiveData
 import com.dvalic.appaudiclass.data.network.NetworkDataSource
@@ -33,6 +30,7 @@ import com.dvalic.appaudiclass.repositorys.network.RepositoryImplementMain
 import com.dvalic.appaudiclass.repositorys.network.RetrofitClient
 import com.dvalic.appaudiclass.ui.main.fragments.acount.LoginDialog
 import com.dvalic.appaudiclass.ui.main.fragments.acount.ProfileDialog
+import com.dvalic.appaudiclass.ui.main.fragments.contact.ContactDialog
 import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.easypermissions.EasyPermissions
 import java.io.File
@@ -63,10 +61,25 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
         checkUserExistence()
         getModelsPolitics()
 
-        val lt = LayoutTransition()
-        lt.disableTransitionType(LayoutTransition.CHANGING)
-        lt.setDuration(500)
-        binding.clMainActivity.layoutTransition = lt
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.item_1 -> {
+                    showMainMenufragment()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.item_2 -> {
+                    showContact()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.item_3 -> {
+                    return@setOnItemSelectedListener true
+                }
+                R.id.item_4 -> {
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
+        }
     }
 
     //Verifica el estado de la conexion de la aplicacion
@@ -76,6 +89,9 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
         connectionLiveData.observe(this, { isConnected ->
             if (isConnected) {
                 binding.tvConectionStatus.visibility = View.GONE
+                if (viewModelData.getModels().value == null && viewModelData.getPolitics().value == null && viewModelData.get360mockups().value == null) {
+                    getModelsPolitics()
+                }
             } else {
                 binding.tvConectionStatus.visibility = View.VISIBLE
             }
@@ -137,6 +153,11 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
         }
     }
 
+    override fun showContact() {
+        val dialog = ContactDialog()
+        dialog.show(supportFragmentManager, "dialog")
+    }
+
     //Verifica si existe usuario
 
     override fun checkUserExistence() {
@@ -174,6 +195,11 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
             binding.barLayout.visibility = View.GONE
             binding.bottomNavigation.visibility = View.GONE
         }
+    }
+
+    override fun showImage(url: String?, drawable: Drawable?, bigPicture: Boolean?) {
+        val dialog = ImageDialog(url,drawable,bigPicture)
+        dialog.show(supportFragmentManager, "dialog")
     }
 
     override fun showWebPage(url: String?) {

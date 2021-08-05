@@ -85,4 +85,6 @@ dependencies {
     implementation "commons-io:commons-io:20030203.000550"
     //Todo Permissions
     implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+    //Todo PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 }

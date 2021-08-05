@@ -10,10 +10,10 @@ import com.dvalic.appaudiclass.databinding.ItemMockupsBinding
 
 class RecyclerMockups(
     private val item: ArrayList<Maquetas>,
-    private val itemClickListener: OnMovieclickListener,
+    private val itemClickListener: OnMenuclickListener,
 ) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 
-    interface OnMovieclickListener {
+    interface OnMenuclickListener {
         fun onMenuClick(menu: Maquetas)
     }
 

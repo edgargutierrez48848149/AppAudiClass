@@ -34,10 +34,5 @@ abstract class LocalUserDB :RoomDatabase(){
                 return instance
             }
         }
-
-
-        fun destroyInstance(){
-            INSTANCE = null
-        }
     }
 }

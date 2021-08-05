@@ -4,8 +4,6 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -14,22 +12,16 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.core.Resource
-import com.dvalic.appaudiclass.data.local.LocalUserDB
-import com.dvalic.appaudiclass.data.local.LocalUserDao
 import com.dvalic.appaudiclass.data.network.NetworkDataSource
 import com.dvalic.appaudiclass.databinding.DialogLoginBinding
-import com.dvalic.appaudiclass.databinding.DialogProfileBinding
 import com.dvalic.appaudiclass.presentation.ViewModelFactoryMain
 import com.dvalic.appaudiclass.presentation.ViewModelMain
 import com.dvalic.appaudiclass.presentation.local.ViewModelLocal
 import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import com.dvalic.appaudiclass.repositorys.network.RepositoryImplementMain
 import com.dvalic.appaudiclass.repositorys.network.RetrofitClient
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
 
 class LoginDialog : DialogFragment() {
 
@@ -38,9 +30,9 @@ class LoginDialog : DialogFragment() {
     private lateinit var viewModelLocal: ViewModelLocal
     private val viewModel by viewModels<ViewModelMain> {
         ViewModelFactoryMain(
-            RepositoryImplementMain(
-                NetworkDataSource(RetrofitClient.webservice)
-            )
+                RepositoryImplementMain(
+                        NetworkDataSource(RetrofitClient.webservice)
+                )
         )
     }
 
@@ -75,7 +67,14 @@ class LoginDialog : DialogFragment() {
             }
         }
 
+        binding.btnRecoverPassword.setOnClickListener {
+            val dialog = RecoverPasswordDialog()
+            dialog.show(childFragmentManager, "dialog")
+        }
+
         binding.btnToRegister.setOnClickListener {
+            val dialog = RegisterUserDialog()
+            dialog.show(childFragmentManager, "dialog")
 
         }
         return builder.create()
@@ -86,38 +85,39 @@ class LoginDialog : DialogFragment() {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         val correo: String = binding.etEmail.text.toString()
         if (!correo.matches(emailPattern.toRegex())) {
-            binding.tilEmail.error = "error"
+            binding.tilEmail.error = getString(R.string.correo_no_valido)
             camposCompletos = false
         }
         if (binding.etPassword.text.toString() == "") {
-            binding.tilPassword.error = "getString()"
+            binding.tilPassword.error = getString(R.string.contrasena_no_valido)
             camposCompletos = false
         }
         return camposCompletos
     }
 
     private fun startServiceUser() {
-        viewModel.fetchUserSocial(binding.etEmail.text.toString()).observe(
-            this,
-            { result ->
-                when (result) {
-                    is Resource.Loading -> {
-                        binding.progressIndicator.visibility = View.VISIBLE
-                    }
-                    is Resource.Success -> {
-                        binding.progressIndicator.visibility = View.GONE
-                        if (result.data.Ok.equals("SI")){
-                            result.data.Objeto?.let { viewModelLocal.inserUser(it) }
-                            interfazFragments?.logIn()
-                            dismiss()
+        viewModel.fetchUser(binding.etEmail.text.toString(), binding.etPassword.text.toString()).observe(
+                this,
+                { result ->
+                    when (result) {
+                        is Resource.Loading -> {
+                            binding.progressIndicator.visibility = View.VISIBLE
                         }
-                        Toast.makeText(context, result.data.Mensaje, Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Failure -> {
-                        binding.progressIndicator.visibility = View.GONE
+                        is Resource.Success -> {
+                            binding.progressIndicator.visibility = View.GONE
+                            if (result.data.Ok.equals("SI")) {
+                                result.data.Objeto?.let { viewModelLocal.inserUser(it) }
+                                interfazFragments?.logIn()
+                                dismiss()
+                            }
+                            Toast.makeText(context, result.data.Mensaje, Toast.LENGTH_SHORT).show()
+                        }
+                        is Resource.Failure -> {
+                            binding.progressIndicator.visibility = View.GONE
+                        }
                     }
                 }
-            })
+        )
     }
 
     override fun onAttach(context: Context) {

@@ -6,6 +6,7 @@
     android:id="@+id/cl_main_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".ui.main.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -80,7 +81,7 @@
         android:textColor="@color/white"
         android:visibility="visible"
         android:background="@color/black"
-        android:text="Sin conexión"
+        android:text="@string/sin_conexion"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,10 @@ package com.dvalic.appaudiclass.ui.main.fragments.menu
 import android.animation.LayoutTransition
 import android.content.Context
 import android.os.Bundle
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.dvalic.appaudiclass.R
@@ -18,8 +21,6 @@ class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
 
     private lateinit var binding: FragmentSecondaryMenuBinding
     private var interfazFragments: InterfazFragments? = null
-    private var visivilityPolitics: Boolean = false
-    private var visivilityLegal: Boolean = false
     private val mainViewModel: ViewModelData by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,23 +29,20 @@ class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
 
         interfazFragments?.showBars(false)
 
-        val lt = LayoutTransition()
-        lt.disableTransitionType(LayoutTransition.APPEARING)
-        binding.llSecondaryMenu.layoutTransition = lt
-
         mainViewModel.getPolitics().observe(viewLifecycleOwner, { politics ->
-            binding.rvPolitics.adapter = politics.PoliticasAgencias?.let { RecyclerSecondaryMenuPolitics(it, this) }
+            binding.rvPolitics.adapter =
+                politics.PoliticasAgencias?.let { RecyclerSecondaryMenuPolitics(it, this) }
             binding.cvTermsConditions.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putString("Ruta",politics.TerminoYCondiciones)
-                    putInt("Type",2)
+                    putString("Ruta", politics.TerminoYCondiciones)
+                    putInt("Type", 2)
                 }
                 interfazFragments?.showPdf(bundle)
             }
             binding.cvNoticePrivacy.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putString("Ruta",politics.AvisoDePrivacidad)
-                    putInt("Type",2)
+                    putString("Ruta", politics.AvisoDePrivacidad)
+                    putInt("Type", 2)
                 }
                 interfazFragments?.showPdf(bundle)
             }
@@ -52,37 +50,48 @@ class SecondaryMenuFragment : Fragment(R.layout.fragment_secondary_menu),
 
         binding.ivClose.setOnClickListener { requireActivity().onBackPressed() }
 
+        binding.cvPurchasingProcess.setOnClickListener {
+            interfazFragments?.showContact()
+        }
+
+        binding.cvPolitics.setOnClickListener {
+            binding.ivPolitics.animate()
+                .rotation(if (binding.rvPolitics.visibility == View.VISIBLE) 0f else 180f).apply {
+                    duration = 400
+                    interpolator = DecelerateInterpolator()
+                }.start()
+            binding.rvPolitics.visibility =
+                if (binding.rvPolitics.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+        }
+
+        binding.cvLegal.setOnClickListener {
+            binding.ivLegal.animate()
+                .rotation(if (binding.llLegal.visibility == View.VISIBLE) 0f else 180f).apply {
+                    duration = 400
+                    interpolator = DecelerateInterpolator()
+                }.start()
+            binding.llLegal.visibility =
+                if (binding.llLegal.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+        }
+
         binding.cvUser.setOnClickListener {
             interfazFragments?.showAcount()
         }
 
-        binding.cvPolitics.setOnClickListener {
-            if (visivilityPolitics) {
-                visivilityPolitics = false
-                binding.rvPolitics.visibility = View.GONE
-            } else {
-                visivilityPolitics = true
-                binding.rvPolitics.visibility = View.VISIBLE
-            }
+        binding.cvContacto.setOnClickListener {
+            interfazFragments?.showContact()
         }
 
-        binding.cvLegal.setOnClickListener {
-            if (visivilityLegal) {
-                visivilityLegal = false
-                binding.llLegal.visibility = View.GONE
-            } else {
-                visivilityLegal = true
-                binding.llLegal.visibility = View.VISIBLE
-            }
+        binding.cvShare.setOnClickListener {
+            interfazFragments?.showContact()
         }
-
 
     }
 
     override fun onClickPolitics(politics: PoliticasAgencias) {
         val bundle = Bundle().apply {
-            putString("Ruta",politics.Politicas)
-            putInt("Type",2)
+            putString("Ruta", politics.Politicas)
+            putInt("Type", 2)
         }
         interfazFragments?.showPdf(bundle)
     }

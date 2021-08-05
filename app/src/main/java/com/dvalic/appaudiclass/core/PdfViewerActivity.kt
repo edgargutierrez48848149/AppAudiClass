@@ -1,16 +1,12 @@
 package com.dvalic.appaudiclass.core
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.dvalic.appaudiclass.R
@@ -40,51 +36,14 @@ class PdfViewerActivity : AppCompatActivity() {
         when (type) {
             0 -> ruta?.let { getPdfNameFromAssets(it) }
             1 -> selectPdfFromStorage()
-            2 -> checkPermission()
-        }
-    }
-
-    private fun checkPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestCameraPermission()
-        } else {
-            binding.progressIndicator.visibility = View.VISIBLE
-            ruta?.let {
-                downloadPdfFromInternet(it, this.externalCacheDir?.absolutePath.toString())
+            2 -> {
+                binding.progressIndicator.visibility = View.VISIBLE
+                ruta?.let { downloadPdfFromInternet(it, this.externalCacheDir?.absolutePath.toString()) }
             }
         }
     }
 
-    private fun requestCameraPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            //El usuario ya ha rechazado el permiso anteriormente, debemos informarle que vaya a ajustes.
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 225)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            225 -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    binding.progressIndicator.visibility = View.VISIBLE
-                    ruta?.let {
-                        downloadPdfFromInternet(it, this.externalCacheDir?.absolutePath.toString())
-                    }
-                } else {
-                    //El usuario ha rechazado el permiso, podemos desactivar la funcionalidad o mostrar una vista/diálogo.
-                    finish()
-                }
-                return
-            }
-            else -> {
-                // Este else lo dejamos por si sale un permiso que no teníamos controlado.
-            }
-        }
-    }
-
-    fun getPdfNameFromAssets(pdfName: String) {
+    private fun getPdfNameFromAssets(pdfName: String) {
         binding.PdfViewer.fromAsset(pdfName)
                 .pages(0, 2, 1, 3, 3, 3)
                 .enableSwipe(true)
@@ -144,7 +103,7 @@ class PdfViewerActivity : AppCompatActivity() {
                     }
 
                     override fun onError(error: com.downloader.Error?) {
-                        Snackbar.make(binding.PdfViewer, "Problema en archivo PDF", Snackbar.LENGTH_SHORT).show()
+                        Toast.makeText(this@PdfViewerActivity,"Se requiere conexion a internet para abrir el documento",Toast.LENGTH_SHORT).show()
                         finish()
                     }
                 })

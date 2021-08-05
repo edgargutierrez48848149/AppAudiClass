@@ -6,13 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dvalic.appaudiclass.core.ViewHolderMain
-import com.dvalic.appaudiclass.data.models.Anios
 import com.dvalic.appaudiclass.data.models.GamaColores
-import com.dvalic.appaudiclass.data.models.Modelos
 import com.dvalic.appaudiclass.databinding.ItemColorBinding
-import com.dvalic.appaudiclass.databinding.ItemPictureBinding
-import com.dvalic.appaudiclass.databinding.ViewpagerDetailsBinding
-import java.util.ArrayList
+import java.util.*
 
 class RecyclerColors(private val item: ArrayList<GamaColores>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 

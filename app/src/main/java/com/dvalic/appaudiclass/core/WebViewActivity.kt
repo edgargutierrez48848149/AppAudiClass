@@ -14,10 +14,10 @@ import com.dvalic.appaudiclass.databinding.ActivityWebViewBinding
 class WebViewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWebViewBinding
-    private var Ruta: String? = ""
-    private var NombreApp: String? = ""
-    private var Anio: String? = ""
-    private var Version: String? = ""
+    private var ruta: String? = ""
+    private var nombreApp: String? = ""
+    private var anio: String? = ""
+    private var version: String? = ""
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +27,13 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         intent.extras?.let { bundle ->
-            Ruta = bundle.getString("Ruta")
-            NombreApp = bundle.getString("NombreApp")
-            Anio = bundle.getString("Anio")
-            Version = bundle.getString("Version")
+            ruta = bundle.getString("Ruta")
+            nombreApp = bundle.getString("NombreApp")
+            anio = bundle.getString("Anio")
+            version = bundle.getString("Version")
         }
 
-        if (Anio == null || Anio.equals("") || NombreApp == null || NombreApp.equals("")) {
+        if (anio == null || anio.equals("") || nombreApp == null || nombreApp.equals("")) {
             binding.btnBuy.visibility = View.GONE
         }
 
@@ -48,12 +48,12 @@ class WebViewActivity : AppCompatActivity() {
         settings.loadWithOverviewMode = true
         settings.useWideViewPort = true
         settings.mediaPlaybackRequiresUserGesture = false
-        Ruta?.let { binding.WebView.loadUrl(it) }
+        ruta?.let { binding.WebView.loadUrl(it) }
         binding.btnBuy.setOnClickListener {
             val intent = Intent()
-            intent.putExtra("NombreApp", NombreApp)
-            intent.putExtra("Anio", Anio)
-            intent.putExtra("Version", Version)
+            intent.putExtra("NombreApp", nombreApp)
+            intent.putExtra("Anio", anio)
+            intent.putExtra("Version", version)
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
