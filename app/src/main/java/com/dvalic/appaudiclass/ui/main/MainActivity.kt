@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
 
     override fun showVersionsFragment(bundle: Bundle?) {
         showBars(true)
-        findNavController(R.id.fragment_container_view).navigate(R.id.action_modelsFragment_to_versionsFragment)
+        findNavController(R.id.fragment_container_view).navigate(R.id.action_modelsFragment_to_versionsFragment,bundle)
     }
 
     override fun showAcount() {

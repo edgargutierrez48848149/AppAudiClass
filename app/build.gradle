@@ -80,7 +80,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.14.2'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.14.2'
     //Todo PDF Viewer
-    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     implementation 'com.mindorks.android:prdownloader:0.6.0'
     implementation "commons-io:commons-io:20030203.000550"
     //Todo Permissions

@@ -3,10 +3,7 @@ package com.dvalic.appaudiclass.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dvalic.appaudiclass.data.models.Model360mockups
-import com.dvalic.appaudiclass.data.models.ModelModels
-import com.dvalic.appaudiclass.data.models.ModelPolitics
-import com.dvalic.appaudiclass.data.models.ModelUser
+import com.dvalic.appaudiclass.data.models.*
 
 class ViewModelData : ViewModel() {
     private val models = MutableLiveData<ModelModels>()

@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dvalic.appaudiclass.core.ViewHolderMain
+import com.dvalic.appaudiclass.data.models.Colores
 import com.dvalic.appaudiclass.data.models.GamaColores
 import com.dvalic.appaudiclass.databinding.ItemColorBinding
 import java.util.*
 
-class RecyclerColors(private val item: ArrayList<GamaColores>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
+class RecyclerColorsVersion(private var item: ArrayList<Colores>) : RecyclerView.Adapter<ViewHolderMain<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMain<*> {
         val itemBinding = ItemColorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,8 +29,8 @@ class RecyclerColors(private val item: ArrayList<GamaColores>) : RecyclerView.Ad
     private inner class ViewHolder(
         val binding:ItemColorBinding,
         val context:Context
-    ):ViewHolderMain<GamaColores>(binding.root){
-        override fun bind(item: GamaColores) {
+    ):ViewHolderMain<Colores>(binding.root){
+        override fun bind(item: Colores) {
             Glide.with(context).load(item.RutaMini).into(binding.ivFoto)
         }
     }

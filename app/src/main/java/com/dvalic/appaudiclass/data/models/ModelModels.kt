@@ -6,13 +6,13 @@ import java.util.ArrayList
 data class ModelModels(
     val IdMarca: String? = "",
     val Modelos: ArrayList<Modelos>? = arrayListOf()
-)
+): Serializable
 
 data class Modelos(
     val IdModelo: String? = "",
     val NombreModelo: String? = "",
     val Anios: ArrayList<Anios>? = arrayListOf()
-)
+): Serializable
 
 data class Anios(
     val Anio: String? = "",
@@ -24,8 +24,7 @@ data class Anios(
     val GamaColores: ArrayList<GamaColores>? = arrayListOf(),
     val Atributo5: String? = "",
     val Atributo6: String? = ""
-)
-
+) : Serializable
 data class Versiones(
     val Nombre: String? = "",
     val RutaVideo: String? = "",
@@ -44,7 +43,7 @@ data class PrecioTransmision(
     val Iva: String? = "",
     val SubTotal: String? = "",
     val Total: String? = ""
-)
+): Serializable
 
 data class Colores(
     val IdColor: String? = "",
@@ -53,7 +52,7 @@ data class Colores(
     val RutaMini: String? = "",
     val RutaLocalMini: String? = "",
     val RutaLocal: String? = ""
-)
+): Serializable
 
 data class AccesoriosModelos(
     var Concepto: String? = "",
@@ -62,7 +61,7 @@ data class AccesoriosModelos(
     var SubTotal: String? = "",
     var Iva: String? = "",
     var Total: String? = ""
-)
+): Serializable
 
 data class GamaColores(
     var Nombre: String? = "",
@@ -70,4 +69,4 @@ data class GamaColores(
     var RutaMini: String? = "",
     var RutaLocalMini: String? = "",
     var RutaLocal: String? = ""
-)
+): Serializable

@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dvalic.appaudiclass.core.LayoutPagerManager
@@ -11,6 +13,7 @@ import com.dvalic.appaudiclass.core.ViewHolderMain
 import com.dvalic.appaudiclass.data.models.Anios
 import com.dvalic.appaudiclass.data.models.Versiones
 import com.dvalic.appaudiclass.databinding.ViewpagerDetailsBinding
+import com.dvalic.appaudiclass.presentation.ViewModelData
 import com.dvalic.appaudiclass.repositorys.network.InterfazFragments
 import java.util.*
 
@@ -48,9 +51,8 @@ class ViewPagerDetails(
                 )
             }
             binding.rvVersions.adapter = RecyclerVersions(item.Versiones, this@ViewPagerDetails)
-            binding.rvColors.layoutManager =
-                LayoutPagerManager(context, LinearLayoutManager.HORIZONTAL, false, 5)
-            binding.rvColors.adapter = item.GamaColores?.let { RecyclerColors(it) }
+            binding.rvColors.layoutManager = LayoutPagerManager(context, LinearLayoutManager.HORIZONTAL, false, 5)
+            binding.rvColors.adapter = item.GamaColores?.let { RecyclerColorsModel(it) }
             binding.tvNameColor.text = item.GamaColores?.get(0)?.Nombre
             binding.tvDetail1.text = item.Atributo1
             binding.tvDetail2.text = item.Atributo2

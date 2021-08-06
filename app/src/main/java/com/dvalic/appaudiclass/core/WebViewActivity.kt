@@ -33,7 +33,7 @@ class WebViewActivity : AppCompatActivity() {
             version = bundle.getString("Version")
         }
 
-        if (anio == null || anio.equals("") || nombreApp == null || nombreApp.equals("")) {
+        if (anio.equals("") && anio.equals("") && nombreApp.equals("") && nombreApp.equals("")) {
             binding.btnBuy.visibility = View.GONE
         }
 

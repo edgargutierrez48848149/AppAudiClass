@@ -48,4 +48,6 @@
     <string name="inicio">Inicio</string>
     <string name="ayuda">Ayuda</string>
     <string name="notificaciones">Notificaciones</string>
+    <string name="lista">Lista</string>
+    <string name="contado">Contado</string>
 </resources>

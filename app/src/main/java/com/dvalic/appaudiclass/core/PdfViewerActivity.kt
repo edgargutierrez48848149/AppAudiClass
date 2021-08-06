@@ -11,7 +11,7 @@ import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.databinding.ActivityPdfViewerBinding
-import com.google.android.material.snackbar.Snackbar
+import com.github.barteksc.pdfviewer.util.FitPolicy
 import java.io.File
 
 
@@ -38,24 +38,30 @@ class PdfViewerActivity : AppCompatActivity() {
             1 -> selectPdfFromStorage()
             2 -> {
                 binding.progressIndicator.visibility = View.VISIBLE
-                ruta?.let { downloadPdfFromInternet(it, this.externalCacheDir?.absolutePath.toString()) }
+                ruta?.let {
+                    downloadPdfFromInternet(
+                        it,
+                        this.externalCacheDir?.absolutePath.toString()
+                    )
+                }
             }
         }
     }
 
     private fun getPdfNameFromAssets(pdfName: String) {
         binding.PdfViewer.fromAsset(pdfName)
-                .pages(0, 2, 1, 3, 3, 3)
-                .enableSwipe(true)
-                .swipeHorizontal(false)
-                .enableDoubletap(true)
-                .defaultPage(0)
-                .enableAnnotationRendering(false)
-                .password(null)
-                .scrollHandle(null)
-                .enableAntialiasing(true)
-                .spacing(0)
-                .load()
+            .pages(0, 2, 1, 3, 3, 3)
+            .enableSwipe(true)
+            .swipeHorizontal(false)
+            .enableDoubletap(true)
+            .defaultPage(0)
+            .enableAnnotationRendering(false)
+            .password(null)
+            .scrollHandle(null)
+            .enableAntialiasing(true)
+            .spacing(0)
+            .pageFitPolicy(FitPolicy.WIDTH)
+            .load()
     }
 
     companion object {
@@ -67,7 +73,10 @@ class PdfViewerActivity : AppCompatActivity() {
         val browseStorage = Intent(Intent.ACTION_GET_CONTENT)
         browseStorage.type = "application/pdf"
         browseStorage.addCategory(Intent.CATEGORY_OPENABLE)
-        startActivityForResult(Intent.createChooser(browseStorage, "Select PDF"), PDF_SELECTION_CODE)
+        startActivityForResult(
+            Intent.createChooser(browseStorage, "Select PDF"),
+            PDF_SELECTION_CODE
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -80,48 +89,55 @@ class PdfViewerActivity : AppCompatActivity() {
 
     private fun showPdfFromUri(uri: Uri?) {
         binding.PdfViewer.fromUri(uri)
-                .pages(0, 2, 1, 3, 3, 3)
-                .enableSwipe(true)
-                .swipeHorizontal(false)
-                .enableDoubletap(true)
-                .defaultPage(0)
-                .enableAnnotationRendering(false)
-                .password(null)
-                .scrollHandle(null)
-                .enableAntialiasing(true)
-                .spacing(0)
-                .load()
+            .pages(0, 2, 1, 3, 3, 3)
+            .enableSwipe(true)
+            .swipeHorizontal(false)
+            .enableDoubletap(true)
+            .defaultPage(0)
+            .enableAnnotationRendering(false)
+            .password(null)
+            .scrollHandle(null)
+            .enableAntialiasing(true)
+            .spacing(0)
+            .pageFitPolicy(FitPolicy.WIDTH)
+            .load()
     }
 
     private fun downloadPdfFromInternet(url: String, dirPath: String) {
         PRDownloader.download(url, dirPath, "AppAudiClass.pdf").build()
-                .start(object : OnDownloadListener {
-                    override fun onDownloadComplete() {
-                        val downloadedFile = File(dirPath, "AppAudiClass.pdf")
-                        binding.progressIndicator.visibility = View.GONE
-                        showPdfFromFile(downloadedFile)
-                    }
+            .start(object : OnDownloadListener {
+                override fun onDownloadComplete() {
+                    val downloadedFile = File(dirPath, "AppAudiClass.pdf")
+                    binding.progressIndicator.visibility = View.GONE
+                    showPdfFromFile(downloadedFile)
+                }
 
-                    override fun onError(error: com.downloader.Error?) {
-                        Toast.makeText(this@PdfViewerActivity,"Se requiere conexion a internet para abrir el documento",Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                })
+                override fun onError(error: com.downloader.Error?) {
+                    Toast.makeText(
+                        this@PdfViewerActivity,
+                        "Se requiere conexion a internet para abrir el documento",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                }
+            })
     }
 
     private fun showPdfFromFile(file: File) {
+
         binding.PdfViewer.fromFile(file)
-                .pages(0, 2, 1, 3, 3, 3)
-                .enableSwipe(true)
-                .swipeHorizontal(false)
-                .enableDoubletap(true)
-                .defaultPage(0)
-                .enableAnnotationRendering(false)
-                .password(null)
-                .scrollHandle(null)
-                .enableAntialiasing(true)
-                .spacing(0)
-                .load()
+            .pages(0, 2, 1, 3, 3, 3)
+            .enableSwipe(true)
+            .swipeHorizontal(false)
+            .enableDoubletap(true)
+            .defaultPage(0)
+            .enableAnnotationRendering(false)
+            .password(null)
+            .scrollHandle(null)
+            .enableAntialiasing(true)
+            .spacing(0)
+            .pageFitPolicy(FitPolicy.WIDTH)
+            .load()
     }
 
     override fun onBackPressed() {
