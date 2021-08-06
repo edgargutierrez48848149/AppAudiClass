@@ -9,11 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
-import com.dvalic.appaudiclass.R
 import com.dvalic.appaudiclass.databinding.ActivityPdfViewerBinding
 import com.github.barteksc.pdfviewer.util.FitPolicy
 import java.io.File
-
 
 class PdfViewerActivity : AppCompatActivity() {
 
@@ -23,9 +21,9 @@ class PdfViewerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pdf_viewer)
         binding = ActivityPdfViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         PRDownloader.initialize(applicationContext)
 
         intent.extras?.let { bundle ->

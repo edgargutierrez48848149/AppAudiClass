@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".core.PdfViewerActivity">
 
@@ -20,7 +21,6 @@
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/PdfViewer"
-        android:layout_marginTop="35dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent" />

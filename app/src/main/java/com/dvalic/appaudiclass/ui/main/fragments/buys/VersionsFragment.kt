@@ -51,7 +51,7 @@ class VersionsFragment : Fragment(R.layout.fragment_versions) {
         binding.rvColors.adapter = version.Colores?.let { RecyclerColorsVersion(it) }
         binding.tvNameColor.text = version.Colores?.get(0)?.Nombre
 
-     //   binding.ivVersion.setOnClickListener { interfazFragments?.showImage(version.Colores?.get(0)?.Ruta) }
+        binding.ivVersion.setOnClickListener { interfazFragments?.showImage(version.Colores?.get(0)?.Ruta) }
 
         binding.cvMockup.setOnClickListener {
             val bundle = Bundle().apply {
