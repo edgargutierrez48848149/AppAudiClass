@@ -5,4 +5,10 @@
         <item>@color/secundary</item>
         <item>@color/black</item>
     </integer-array>
+
+    <dimen name="title">22sp</dimen>
+    <dimen name="subtitle">18sp</dimen>
+    <dimen name="edit">16sp</dimen>
+    <dimen name="text">14sp</dimen>
+    <dimen name="details">12sp</dimen>
 </resources>

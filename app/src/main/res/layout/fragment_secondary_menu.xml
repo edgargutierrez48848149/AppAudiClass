@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sv_fragment_secondary_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    android:scrollbarThumbVertical="@drawable/shape_scrollbar"
     android:fillViewport="true"
+    android:scrollbarThumbVertical="@drawable/shape_scrollbar"
+    android:scrollbars="vertical"
     tools:context=".ui.main.fragments.menu.SecondaryMenuFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,16 +50,16 @@
             android:id="@+id/ll_secondary_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:animateLayoutChanges="true"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="@+id/guideline_1">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_purchasingProcess"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
                 android:clickable="true"
+                android:elevation="5dp"
                 android:focusable="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,6 +72,7 @@
                         android:layout_marginStart="15dp"
                         android:padding="15dp"
                         android:text="@string/mis_compras"
+                        android:textSize="@dimen/edit"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -98,15 +98,15 @@
                 android:id="@+id/cv_politics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
                 android:clickable="true"
+                android:elevation="5dp"
                 android:focusable="true">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="20dp">
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
@@ -115,6 +115,7 @@
                         android:layout_weight="1"
                         android:padding="15dp"
                         android:text="@string/politicas"
+                        android:textSize="@dimen/edit"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -122,7 +123,7 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@drawable/ic_arrow_scroll_vertical"/>
+                        android:src="@drawable/ic_arrow_scroll_vertical" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -133,16 +134,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
-                android:visibility="gone"
                 android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_legal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
                 android:clickable="true"
+                android:elevation="5dp"
                 android:focusable="true">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -158,6 +159,7 @@
                         android:layout_weight="1"
                         android:padding="15dp"
                         android:text="@string/legales"
+                        android:textSize="@dimen/edit"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -165,7 +167,7 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@drawable/ic_arrow_scroll_vertical"/>
+                        android:src="@drawable/ic_arrow_scroll_vertical" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -175,8 +177,8 @@
                 android:id="@+id/ll_legal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:elevation="0dp"
+                android:orientation="vertical"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5">
 
@@ -190,10 +192,9 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        style="@style/text"
                         android:padding="15dp"
-                        android:text="@string/terminos_y_condiciones"
-                        android:textStyle="bold" />
+                        android:text="@string/terminos_y_condiciones" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -207,10 +208,9 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        style="@style/text"
                         android:padding="15dp"
-                        android:text="@string/aviso_de_privacidad"
-                        android:textStyle="bold" />
+                        android:text="@string/aviso_de_privacidad"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -220,8 +220,8 @@
                 android:id="@+id/cv_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
                 android:clickable="true"
+                android:elevation="5dp"
                 android:focusable="true">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -230,6 +230,7 @@
                     android:layout_marginStart="15dp"
                     android:padding="15dp"
                     android:text="@string/usuario"
+                    android:textSize="@dimen/edit"
                     android:textStyle="bold" />
 
             </com.google.android.material.card.MaterialCardView>
@@ -238,8 +239,8 @@
                 android:id="@+id/cv_contacto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
                 android:clickable="true"
+                android:elevation="5dp"
                 android:focusable="true">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -248,6 +249,7 @@
                     android:layout_marginStart="15dp"
                     android:padding="15dp"
                     android:text="@string/contacto"
+                    android:textSize="@dimen/edit"
                     android:textStyle="bold" />
 
             </com.google.android.material.card.MaterialCardView>
@@ -256,8 +258,8 @@
                 android:id="@+id/cv_share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
                 android:clickable="true"
+                android:elevation="5dp"
                 android:focusable="true">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -266,6 +268,7 @@
                     android:layout_marginStart="15dp"
                     android:padding="15dp"
                     android:text="@string/compartir_app"
+                    android:textSize="@dimen/edit"
                     android:textStyle="bold" />
 
             </com.google.android.material.card.MaterialCardView>

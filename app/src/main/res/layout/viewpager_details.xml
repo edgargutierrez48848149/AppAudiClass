@@ -82,7 +82,7 @@
             android:id="@+id/tv_name_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +149,7 @@
                         android:id="@+id/tv_detail_1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        style="@style/details"
                         tools:text="Detail 1"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -170,7 +170,7 @@
                         android:id="@+id/tv_detail_2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        style="@style/details"
                         tools:text="Detail 2"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -191,7 +191,7 @@
                         android:id="@+id/tv_detail_3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        style="@style/details"
                         tools:text="Detail 3"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -223,7 +223,7 @@
                         android:id="@+id/tv_detail_4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        style="@style/details"
                         tools:text="Detail 4"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -244,7 +244,7 @@
                         android:id="@+id/tv_detail_5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        style="@style/details"
                         tools:text="Detail 5"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -265,7 +265,7 @@
                         android:id="@+id/tv_detail_6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        style="@style/details"
                         tools:text="Detail 6"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -54,12 +54,12 @@ class ViewPagerDetails(
             binding.rvColors.layoutManager = LayoutPagerManager(context, LinearLayoutManager.HORIZONTAL, false, 5)
             binding.rvColors.adapter = item.GamaColores?.let { RecyclerColorsModel(it) }
             binding.tvNameColor.text = item.GamaColores?.get(0)?.Nombre
-            binding.tvDetail1.text = item.Atributo1
-            binding.tvDetail2.text = item.Atributo2
-            binding.tvDetail3.text = item.Atributo3
-            binding.tvDetail4.text = item.Atributo4
-            binding.tvDetail5.text = item.Atributo5
-            binding.tvDetail6.text = item.Atributo6
+            binding.tvDetail1.text = item.Atributo1?.replace("\\n", Objects.requireNonNull(System.getProperty("line.separator")))
+            binding.tvDetail2.text = item.Atributo2?.replace("\\n", Objects.requireNonNull(System.getProperty("line.separator")))
+            binding.tvDetail3.text = item.Atributo3?.replace("\\n", Objects.requireNonNull(System.getProperty("line.separator")))
+            binding.tvDetail4.text = item.Atributo4?.replace("\\n", Objects.requireNonNull(System.getProperty("line.separator")))
+            binding.tvDetail5.text = item.Atributo5?.replace("\\n", Objects.requireNonNull(System.getProperty("line.separator")))
+            binding.tvDetail6.text = item.Atributo6?.replace("\\n", Objects.requireNonNull(System.getProperty("line.separator")))
         }
     }
 

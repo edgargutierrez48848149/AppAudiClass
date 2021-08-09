@@ -21,7 +21,8 @@
             android:id="@+id/tv_mockups"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            style="@style/text"
+            android:textSize="@dimen/edit"
             tools:text="Mockup"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

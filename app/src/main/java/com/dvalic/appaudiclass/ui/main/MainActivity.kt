@@ -230,6 +230,12 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
         startActivity(intent)
     }
 
+    override fun showExoplayer(bundle: Bundle?) {
+        val intent = Intent(this, ExoplayerActivity::class.java)
+        bundle?.let { intent.putExtras(it) }
+        startActivity(intent)
+    }
+
     override fun showPdf(bundle: Bundle?) {
         if (permissionExternalStorage()) {
             val intent = Intent(this, PdfViewerActivity::class.java)
@@ -324,11 +330,13 @@ class MainActivity : AppCompatActivity(), InterfazFragments, EasyPermissions.Per
 
     private fun deleteDir(dir: File?): Boolean {
         if (dir != null && dir.isDirectory) {
-            val children = dir.list()
-            for (i in children.indices) {
-                val success = deleteDir(File(dir, children[i]))
-                if (!success) {
-                    return false
+            val children: Array<String>? = dir.list()
+            if (children != null) {
+                for (i in children.indices) {
+                    val success = deleteDir(File(dir, children[i]))
+                    if (!success) {
+                        return false
+                    }
                 }
             }
         }

@@ -11,8 +11,8 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -21,21 +21,18 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_title"
+                style="@style/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:padding="5dp"
-                android:textAppearance="?attr/textAppearanceHeadline6"
                 tools:text="Title" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_subtitle"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:padding="5dp"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
                 tools:text="Subtitle" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -52,8 +49,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:textColor="?attr/colorPrimary"
-                android:visibility="gone"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text"
+                android:visibility="visible"
                 tools:text="Button Negative" />
 
             <com.google.android.material.button.MaterialButton
@@ -64,10 +63,11 @@
                 android:layout_weight="1"
                 android:backgroundTint="?attr/colorPrimary"
                 android:textAllCaps="false"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                tools:text="Button Positive"
-                app:cornerRadius="50dp" />
+                android:textSize="@dimen/text"
+                android:textStyle="bold"
+                app:cornerRadius="50dp"
+                tools:text="Button Positive" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

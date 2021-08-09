@@ -68,6 +68,13 @@ class VersionsFragment : Fragment(R.layout.fragment_versions) {
             interfazFragments?.showPdf(bundle)
         }
 
+        binding.cvMedia.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("Ruta", version.RutaVideo.toString())
+            }
+            interfazFragments?.showExoplayer(bundle)
+        }
+
     }
 
 

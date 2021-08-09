@@ -21,6 +21,7 @@ interface InterfazFragments {
     fun showWebPage(url: String?)
     fun showSnackbar(url: String?, type: Int)
     fun showWebView(bundle: Bundle?)
+    fun showExoplayer(bundle: Bundle?)
     fun showPdf(bundle: Bundle?)
     fun showDialog(title: String?, description: String?, textPositiveButton: String?, textNegativeButton: String?, actionPositive: InterfazDialogAction?, actionNegative: InterfazDialogAction?)
 }

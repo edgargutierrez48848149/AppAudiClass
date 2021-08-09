@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppAudiClass"
         tools:targetApi="n">
-        <activity android:name=".core.ExoplayerActivity"></activity>
+        <activity
+            android:name=".core.ExoplayerActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"/>
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait"

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbars="vertical"
+    android:fillViewport="true"
     android:scrollbarThumbVertical="@drawable/shape_scrollbar"
-    android:fillViewport="true">
+    android:scrollbars="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,11 +22,11 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/img_background_title"
-                android:gravity="center"
-                android:textAllCaps="true"
                 android:text="@string/usuario"
-                android:textColor="@color/white" />
+                android:background="@drawable/img_background_title"
+                android:textColor="@color/white"
+                app:textAllCaps="true"
+                style="@style/title"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="80dp"
@@ -77,6 +77,7 @@
                 android:text="@string/iniciar_sesion" />
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -135,11 +136,12 @@
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/recuperar_clave"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="@string/recuperar_clave"
                     android:textAllCaps="false"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_to_register"
@@ -150,7 +152,8 @@
                     android:layout_weight="1"
                     android:text="@string/quiero_registrarme"
                     android:textAllCaps="false"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

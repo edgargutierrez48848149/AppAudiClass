@@ -25,8 +25,8 @@
         android:id="@+id/tv_model_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
+        style="@style/title"
         tools:text="Model Name" />
 
     <androidx.viewpager2.widget.ViewPager2

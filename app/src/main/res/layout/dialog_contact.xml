@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbars="vertical"
-    android:scrollbarThumbVertical="@drawable/shape_scrollbar"
     android:fillViewport="true"
+    android:scrollbarThumbVertical="@drawable/shape_scrollbar"
+    android:scrollbars="vertical"
     tools:context=".ui.main.fragments.contact.ContactDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,13 +22,13 @@
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/title"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/img_background_title"
-                android:gravity="center"
                 android:text="@string/contacto"
-                android:textAllCaps="true"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                app:textAllCaps="true" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="80dp"
@@ -39,9 +39,9 @@
                 android:src="@drawable/ic_acount" />
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/necesitas_ayuda" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,9 +104,9 @@
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/sw_legal"
+                    style="@style/switch_app"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/switch_app"
                     app:layout_constraintBottom_toBottomOf="@+id/materialTextView2"
                     app:layout_constraintEnd_toStartOf="@+id/materialTextView1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,10 +114,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/materialTextView"
+                    style="@style/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:gravity="center"
                     android:text="@string/estoy_de_acuerdo_con"
                     app:layout_constraintEnd_toEndOf="@+id/materialTextView1"
                     app:layout_constraintStart_toStartOf="@+id/materialTextView1"
@@ -125,10 +125,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/materialTextView1"
+                    style="@style/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:gravity="center"
                     android:text="@string/terminos_y_condiciones"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -136,10 +136,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/materialTextView2"
+                    style="@style/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:gravity="center"
                     android:text="@string/aviso_de_privacidad"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/materialTextView1"

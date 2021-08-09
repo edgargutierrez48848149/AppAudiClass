@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="progress_colors">
+        <item>@color/primary</item>
+        <item>@color/secundary</item>
+        <item>@color/black</item>
+    </integer-array>
+
+    <dimen name="title">21sp</dimen>
+    <dimen name="subtitle">17sp</dimen>
+    <dimen name="edit">15sp</dimen>
+    <dimen name="text">13sp</dimen>
+    <dimen name="details">11sp</dimen>
+</resources>
